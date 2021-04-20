@@ -1,0 +1,128 @@
+%%% Ne pas modifier jusqu'à la ligne 25
+\documentclass[a4paper,12pt]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+%%\usepackage{CJK}
+\usepackage{yhmath}
+\usepackage[left=2cm,right=2cm,top=3cm,bottom=2cm, headheight=1.5cm,headsep=1.5cm]{geometry}
+%%\usepackage{CJKutf8}
+\usepackage{amsfonts}
+\usepackage{amsmath,amsfonts,amssymb,dsfont}
+\usepackage{graphicx}
+\usepackage{enumitem}		%\enumerate-resume
+\usepackage[colorlinks=true,unicode={true},hyperindex=false, linkcolor=blue, urlcolor=blue]{hyperref}
+\newcommand{\myref}[1]{\ref{#1} page \pageref{#1}}
+
+\addto\captionsfrench{\def\tablename{Tableau}}  %légendes des tableaux
+\renewcommand\thesection{\Roman{section}~-~} 
+\renewcommand\thesubsection{\Roman{section}.\Alph{subsection}~-~} 
+\renewcommand\thesubsubsection{\Roman{section}.\Alph{subsection}.\arabic{subsubsection}~-~} 
+
+\newcommand{\conclusion}[1]{\newline \centerline{\fbox{#1}}}
+
+\setcounter{secnumdepth}{3}
+\parindent=0pt
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\lhead{SJTU-ParisTech} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chead{DM1}
+\rhead{Daniel 518261910024}
+
+\begin{document}
+\renewcommand{\labelitemi}{$\blacktriangleright$}
+\renewcommand{\labelitemii}{$\bullet$}
+
+
+\section{}
+\begin{itemize}
+    \item Lorsque $\alpha >0$, on a $\frac{1}{n^\alpha} \xrightarrow[n \to +\infty]{} 0$,
+    alors 
+    \begin{align*}
+        \sqrt{1+n^\alpha}-1&=n^\alpha \sqrt{1+\frac{1}{n^\alpha}}-1 \\
+                           &\mathop{\sim}\limits_{n \to +\infty}
+                           n^\alpha \left(1+\frac{1}{2n^\alpha}+o\left(\frac{1}{n^\alpha}\right)\right)-1\\
+                           &=n^\alpha-\frac{1}{2}+o(1)\xrightarrow[n \to +\infty]{} +\infty\\
+    \end{align*}
+    la série est donc divergent grossièrement. \\
+    \item  Lorsque $\alpha =0$, on a
+    \begin{equation}  \nonumber
+        u_n=\left\{  
+                     \begin{array}{rcl}  
+                     \lambda(\sqrt{2}-1) & & {n=3k, k\in \mathbb{N}^*}\\  
+                     \sqrt{2}-1 & & sinon   
+                     \end{array}  
+        \right.  
+        \end{equation} 
+    donc $\lim\limits_{n \to +\infty} u_n \neq 0$, la série est donc divergent grossièrement. \\
+    \item Lorsque $\alpha <0$, on a $n^\alpha \xrightarrow[n \to +\infty]{} 0$, alors
+    \begin{align*}
+        \sqrt{1+n^\alpha}-1&=1+\frac{1}{2}n^\alpha+o(n^\alpha)-1 \\
+                           &= \frac{1}{2}n^\alpha+o(n^\alpha) \mathop{\sim}\limits_{n \to +\infty} \frac{1}{n^{-\alpha}}\\
+    \end{align*}
+    donc $|u_n|\mathop{\sim}\limits_{n \to +\infty} \frac{1}{n^{-\alpha}}$ cars elles sont à termes positifs.
+\end{itemize}
+On a $\sum u_n$ est divergente grossièrement lorsque $\boxed{\alpha \geq 0}$
+\section{}
+On a $\sum |u_n|$ a le même nature que $\sum \frac{1}{n^{-\alpha}}$, qui est divergent lorsque
+$\alpha < -1$, donc $\sum u_n$ est convergente absolument lorsque $\boxed{\alpha < -1}$
+\section{}
+\subsection{}
+On a $w_n=u_{3n}+u_{3n+1}+u_{3n+2}$, donc
+\begin{align*}
+w_n&=\lambda\left(\sqrt{1+\frac{1}{3n}}-1\right)+\left(\sqrt{1+\frac{1}{3n+1}}-1\right)+\left(\sqrt{1+\frac{1}{3n+2}}-1\right)\\
+   &=\lambda\left(\frac{1}{6n}-\frac{1}{8}\left(\frac{1}{3n}\right)^2\right)+
+   \frac{1}{6n+2}+\frac{1}{6n+4}-\frac{1}{8}\left(\frac{1}{(3n+1)^2}+\frac{1}{(3n+2)^2}\right)+o\left(\frac{1}{n^2}\right)\\
+   &=\frac{\lambda}{6n}-\frac{\lambda}{72n^2}+\frac{1}{6n}-\frac{1}{18n^2}+\frac{1}{6n}-\frac{2}{18n^2}-\frac{1}{72n^2}-\frac{1}{72n^2}
+   +o\left(\frac{1}{n^2}\right)\\
+   &=\frac{\lambda}{6n}-\frac{\lambda}{72n^2}+\frac{2}{6n}-\frac{14}{72n^2}+o\left(\frac{1}{n^2}\right)\\
+\end{align*}
+On a donc $\boxed{w_n=\frac{\lambda+2}{6n}-\frac{\lambda+14}{72n^2}+o\left(\frac{1}{n^2}\right)}$
+\subsection{}
+Supposons que 
+\begin{equation}  \nonumber
+    \Phi:\left.  
+                 \begin{array}{rcl}  
+                  \mathbb{N} \to \mathbb{N} & & \\
+                  n \mapsto 3n & & \\
+                 \end{array}  
+    \right.  
+    \end{equation} 
+On a $\Phi$ est strictement croissante, et $\forall n \in \mathbb{N}, \Phi(n+1)-\Phi(n)=3$. 
+Lorsque $\alpha=-1$, $\sqrt{1+\frac{1}{n}}-1\mathop{\sim}\limits_{n \to +\infty}\frac{1}{2n}\mathop{\rightarrow}\limits_{n \to +\infty}0$, 
+on a donc $u_n\mathop{\rightarrow}\limits_{n \to +\infty}0$. Par sommation par parquets de longueur bornée, on a $\sum u_n$ et $\sum w_n$ sont de même nature. 
+\begin{itemize}
+    \item Lorsque $\lambda \neq -2$, $w_n\mathop{\sim}\limits_{n \to +\infty} \frac{1}{6n}$, $\sum w_n$ est donc divergente (série de Riemann diverge). 
+    \item Lorsque $\lambda =-2$, $w_n\mathop{\sim}\limits_{n \to +\infty} \frac{-1}{6n^2}$, $\sum w_n$ est donc converge (série de Riemann converge).
+\end{itemize}
+Finalement, on a $\sum u_n$ converge si $\boxed{\lambda=-2}$
+\section{}
+Lorsque $\alpha=-1, \lambda=-2$, on a $w_n=-\frac{1}{6n^2}+o\left(\frac{1}{n^2}\right)$, et $\sum w_n$ converge.
+On suppose que $v_n=-w_n=\frac{1}{6n^2}+o\left(\frac{1}{n^2}\right)$, qui est une série à termes positfs.
+\subsection{}
+Par comparaison des séries à termes positfs, on a $R_n(w)=-R_n(v)=-R_n(\frac{1}{6n^2})$, en notant $f: n\mapsto \frac{1}{6n^2}$, 
+par une comparaison série-intégrale, on a: $R_n(v)\mathop{\sim}\limits \frac{1}{6n}$ car $f(n)=o\left(\frac{1}{6n}\right)=o\left(\int_n^{+\infty}f(t)\,dt\right)$,
+on a donc $\boxed{R_n(w)\mathop{\sim}\limits_{n \to +\infty} -\frac{1}{6n}}$   
+\subsection{}
+On a $R_{3n-1}(u)=\sum_{k=3n}^{+\infty}u_k=\sum_{k=n}^{+\infty}w_k=R_n(w)$, 
+donc $\boxed{R_{3n-1}(u) \mathop{\sim}\limits_{n \to +\infty} -\frac{1}{6n}}$. 
+
+Et puis, on a
+\begin{align*}
+    R_{3n}(u)&=R_{3n-1}(u)-u_{3n}\\
+             &\mathop{\sim}\limits_{n \to +\infty}-\frac{1}{6n}-(-2)\left(\sqrt{\frac{1}{3n}+1}-1\right)\\
+             &\mathop{\sim}\limits_{n \to +\infty}\frac{1}{6n}
+\end{align*}
+donc $\boxed{R_{3n}(u) \mathop{\sim}\limits_{n \to +\infty} \frac{1}{6n}}$
+\subsection{}
+On a 
+\begin{align*}
+    R_{3n+1}(u)&=R_{3n}(u)-u_{3n+1}\\
+               &=\frac{1}{6n}-\left(\sqrt{1+\frac{1}{3n+1}}-1\right)\\
+               &=\frac{1}{6n}-\left(1+\frac{1}{6n+2}-1+o\left(\frac{1}{3n+1}\right)\right)\\
+               &=o(\frac{1}{n})
+\end{align*}
+Il tends vers $0$ le plus vite lorsque $n$ tends vers $+\infty$
+\end{document}

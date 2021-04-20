@@ -1,0 +1,167 @@
+%%% Ne pas modifier jusqu'à la ligne 25
+\documentclass[a4paper,12pt]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+%%\usepackage{CJK}
+\usepackage{yhmath}
+\usepackage[left=2cm,right=2cm,top=3cm,bottom=2cm, headheight=1.5cm,headsep=1.5cm]{geometry}
+%%\usepackage{CJKutf8}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage{amsmath,amsfonts,amssymb,dsfont}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{enumitem}		%\enumerate-resume
+\usepackage[colorlinks=true,unicode={true},hyperindex=false, linkcolor=blue, urlcolor=blue]{hyperref}
+\newcommand{\myref}[1]{\ref{#1} page \pageref{#1}}
+
+\addto\captionsfrench{\def\tablename{Tableau}}  %légendes des tableaux
+\renewcommand\thesection{\Roman{section}~-~} 
+\renewcommand\thesubsection{\Roman{section}.\Alph{subsection}~-~} 
+\renewcommand\thesubsubsection{\Roman{section}.\Alph{subsection}.\arabic{subsubsection}~-~} 
+
+\newcommand{\conclusion}[1]{\newline \centerline{\fbox{#1}}}
+
+\setcounter{secnumdepth}{3}
+\parindent=0pt
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\lhead{SJTU-ParisTech} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chead{DM}
+\rhead{Daniel 518261910024}
+\begin{document}
+
+\renewcommand{\labelitemi}{$\blacktriangleright$}
+\renewcommand{\labelitemii}{$\bullet$}
+
+
+\section{Exercice 1}
+\subsection{}
+Soit $x \in \mathring{\overline{U}} \cap \mathring{\overline{V}}=\mathring{\widehat{\overline{U} \cap \overline{V}}}$, alors il existe $ r>0$, tel que $BO(x,r) \subset \overline{U} \cap \overline{V}$, 
+
+Soit $y \in BO(x,r) \cap U$, car elles sont ouverts de $(E,d)$, alors il existe$ r^{'} >0$ tel que $BO(y,r^{'}) \subset BO(x,r) \cap U$. 
+Mais comme $U \cap V=\emptyset$, donc $y \in V \subset \overline{V}$, c'est absurde. 
+
+Finalement, on a $x \in \emptyset$, donc $\boxed{\mathring{\overline{U}} \cap \mathring{\overline{V}}=\emptyset}$
+
+\subsection{}
+Par exemple, on se place dans $(\mathbb{R},\vert\cdot \vert)$, on pose $U=\mathbb{Q}$, $V=\mathbb{R}\backslash\mathbb{Q}$
+
+On a $U \cap V=\emptyset$, mais $\mathring{\overline{U}}=\mathbb{R}$, $\mathring{\overline{V}}=\mathbb{R}$. Donc $\mathring{\overline{U}} \cap \mathring{\overline{V}}=\mathbb{R} \neq \emptyset$
+
+\subsection{}
+Soit $a \in \mathring{\partial U}$, alors il existe $r>0$ tel que $BO(a,r) \subset \partial U=\overline{U} \backslash U$ car $U$ est un ouvert de $(E,d)$. 
+
+Donc $BO(a,r) \cap U=\emptyset$, donc $a \notin \overline{U}$, c'est l'absurde car $BO(a,r) \subset \overline{U}$. On en déduit que $\boxed{\mathring{\partial U}=\emptyset}$
+\subsection{}
+
+Soit $(u_n)_{n \in \mathbb{N}}$ une suite de $A+B$, alors pour tout $n \in \mathbb{N}$, il existe $a_n \in A$, $b_n \in B$ tels que 
+$u_n=a_n+b_n$. On obtient donc une suite $(a_n)_{n \in \mathbb{N}}$ de A, et $(b_n)_{n \in \mathbb{N}}$ une suite de B. 
+
+% Comme A et B sont compacts de $(E,\Vert\cdot\Vert)$, donc il existe deux extractions $\phi$ et $\psi$, et $\alpha \in A$, $\beta \in B$ tels que
+% $$
+% a_{\phi(n)} \xrightarrow[n \to +\infty]{}\alpha, b_{\psi(n)} \xrightarrow[n \to +\infty]{}\beta
+% $$ 
+On considère la fonction 
+\begin{equation}  \nonumber
+    f:\left\{  
+                 \begin{array}{rcl}  
+                  E  & \to & \mathbb{R}\\
+                  x  & \mapsto& \Vert x\Vert
+                 \end{array}  
+    \right.  
+\end{equation}
+Car A et B sont compacts, donc ils sont bornés. Donc les suites $(f(a_n))_{n \in \mathbb{N}}$ et $(f(b_n))_{n \in \mathbb{N}}$ sont bornés.
+ Soit $n \in \mathbb{N}$, on a 
+$$
+f(u_n)=\Vert u_n\Vert \leq \Vert a_n\Vert+\Vert b_n\Vert
+$$
+Donc $(f(u_n))_{n \in \mathbb{N}}$ est borné. 
+
+D'après le théorème de Weierstrass, il existe $l \in \mathbb{R}$ et une extraction $\varphi$ tels que 
+$$
+f(u_{\phi(n)}) \xrightarrow[n \to +\infty]{}l
+$$
+On sait que $f$ est continue sur E, on a donc 
+$$
+\forall \epsilon>0, \exists N \in \mathbb{N}^*, \forall n >N \Rightarrow f(u_{\phi(n)}) \in BO(l,\epsilon)
+$$
+Donc 
+$$
+\forall \epsilon>0, \exists N \in \mathbb{N}^*, \forall n >N \Rightarrow u_{\phi(n)} \in f^{-1}(BO(l,\epsilon))
+$$
+Finalement, on a $u_{\phi(n)} \xrightarrow[n \to +\infty]{} f^{-1}(l)$, on a donc \fbox{A+B est compact}
+
+\section{Exercice 2}
+\subsection{}
+Soit $((x_n,y_n))_{n \in \mathbb{N}}$ une suite de $(E^2, \delta)$, on a 
+\begin{align*}
+    & \quad ((x_n,y_n))_{n \in \mathbb{N}} \, \mbox{converge vers} (x,y) \\
+    & \Leftrightarrow \delta((x_n,y_n),(x,y)) \xrightarrow[n \to +\infty]{}0\\
+    & \Leftrightarrow max(d(x_n,x),d(y_n,y))\xrightarrow[n \to +\infty]{}0\\
+    & \Leftrightarrow  d(x_n,x)\xrightarrow[n \to +\infty]{}0, d(y_n,y)\xrightarrow[n \to +\infty]{}0\\
+    & \Leftrightarrow \boxed{x_n \xrightarrow[n \to +\infty]{} x, y_n \xrightarrow[n \to +\infty]{} y}
+\end{align*}
+\subsection{}
+Si on prend $u_1 \in K_1$, alors il existe $v_1 \in K_2$ tel que $d(u_1,v_1)=d(u_1,K_2)$ car $K_2$ est un compact de  $(E,d)$. 
+
+De même, il existe $u_2\in K_1$ tel que $d(v_1,u_2)=d(v_1,K_1) \leq d(v_1,u_1)$. Par récurrence, on peut construire $(u_n)_{n \in \mathbb{N}}$ une suite de $K_1$, 
+$(v_n)_{n \in \mathbb{N}}$ une suite de $K_2$ tels que $(d(u_n,v_n))_{n \in \mathbb{N}}$ est décroissante, avec la borne inférieure $d(K_1,K_2)$, donc on a 
+$$
+d(u_n,v_n)\xrightarrow[n \to +\infty]{}d(K_1,K_2)
+$$ 
+Comme $K_1$ et $K_2$ sont des compacts de $(E,d)$, alors il existe deux extractions $\phi$ et $\psi$, et $x_1 \in K_1$, $x_2 \in K_2$ tels que
+ $$
+ u_{\phi(n)} \xrightarrow[n \to +\infty]{}x_1, v_{\phi \circ \psi(n)} \xrightarrow[n \to +\infty]{}x_2
+ $$
+On a aussi 
+$$
+d(u_{\phi \circ \psi(n)},v_{\phi \circ \psi(n)} ) \xrightarrow[n \to +\infty]{} d(x_1,x_2)
+$$
+Par l'unicité des limites, on a donc $\boxed{d(x_1,x_2)=d(K_1,K_2)}$
+\subsection{}
+\begin{itemize}
+    \item Soit $x \in K$, alors $d(x,F)\geq d(K,F)$. On peut passer a la limite, donc $inf(\{d(x,F),x \in K\}) \geq d(K,F)$
+    % \item il existe une suite $(u_n)_{n \in \mathbb{N}}$ de F tel que soit $x \in K$, $d(x,u_n)\xrightarrow[n \to +\infty]{}d(x,F)$. Donc on a 
+    % $$
+    % \{d(x,F),x \in K\} \subset \{d(x,f),x\in K,f \in F\}
+    % $$
+    % donc $inf(\{d(x,F),x \in K\})\leq inf(\{d(x,f),x \in K,f \in F\})=d(K,F)$
+    \item Soient $x \in K$, $f \in F$, alors $d(x,F) \leq d(x,f)$. Ceci est vraie pour tout $x \in K$, on peut passer a la limite, donc 
+    $$
+    inf(\{d(x,F),x \in K\})\leq inf(\{d(x,f),x \in K,f \in F\})=d(K,F)
+    $$
+\end{itemize}
+On obtient donc $inf(\{d(x,F),x \in K\})=d(K,F)$
+
+On considère la fonction 
+\begin{equation}  \nonumber
+    f:\left\{  
+                 \begin{array}{rcl}  
+                  K  & \to & \mathbb{R}\\
+                  x  & \mapsto& d(x,F)
+                 \end{array}  
+    \right.  
+\end{equation}
+On sait que $f$ est continue sur $K$. D'après le cours, comme $K$ est un compact de $(E,d)$, donc $f$ atteint ses bornes. 
+
+Donc il existe $x_m \in K$ tel que 
+$$
+f(x_m,F)=inf(\{d(x,F),x \in K\})
+$$ 
+Supposons que $d(K,F)=0$, Donc il existe $x_m \in K$, tel que 
+$d(x_m,F)=inf(\{d(x,F),x \in K\})=0$. Car $F$ est un fermé de $(E,d)$, donc $x_m \in F$. Mais comme $F \cap K=\emptyset$ d'après l'hypothèse, c'est absurde. 
+
+On a donc $\boxed{d(K,F) \neq 0}$
+
+\subsection{}
+On se place dans $E=\mathbb{R} \backslash \{0\}$ muni de la distance $\vert\cdot\vert$, 
+avec $K=[-1,0[$, $F=]0,1]$ deux fermés de $(E,\vert\cdot\vert)$. On a $F \cap K=\emptyset$, mais $d(K,F)=0$. 
+
+(On peut prendre $(2^{-n})_{n \in \mathbb{N}}$ une suite de F, $(-2^{-n})_{n \in \mathbb{N}}$ une suite de K, $inf(\{2^{-n}-(-2^{-n}),n \in \mathbb{N}\})=0$)
+
+
+ \end{document}

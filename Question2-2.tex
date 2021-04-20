@@ -1,0 +1,70 @@
+%%% Ne pas modifier jusqu'à la ligne 25
+\documentclass[a4paper,12pt]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+%%\usepackage{CJK}
+\usepackage{yhmath}
+\usepackage[left=2cm,right=2cm,top=3cm,bottom=2cm, headheight=1.5cm,headsep=1.5cm]{geometry}
+\usepackage{amsmath,amsfonts,amssymb,dsfont}
+\usepackage{graphicx}
+\usepackage{enumitem}		%\enumerate-resume
+\usepackage[colorlinks=true,unicode={true},hyperindex=false, linkcolor=blue, urlcolor=blue]{hyperref}
+\newcommand{\myref}[1]{\ref{#1} page \pageref{#1}}
+
+\addto\captionsfrench{\def\tablename{Tableau}}  %légendes des tableaux
+\renewcommand\thesection{\Roman{section}~-~} 
+\renewcommand\thesubsection{\Roman{section}.\Alph{subsection}~-~} 
+\renewcommand\thesubsubsection{\Roman{section}.\Alph{subsection}.\arabic{subsubsection}~-~} 
+
+\newcommand{\conclusion}[1]{\newline \centerline{\fbox{#1}}}
+
+\setcounter{secnumdepth}{3}
+\parindent=0pt
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\lhead{SJTU-ParisTech} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chead{DM1}
+\rhead{Daniel 518261910024}
+
+\begin{document}
+\renewcommand{\labelitemi}{$\blacktriangleright$}
+\renewcommand{\labelitemii}{$\bullet$}
+
+
+\section{Question 2-2}
+En un point $M$, deux ondes de même pulsation $\omega$ sont perceptibles. 
+Les signaux associées sont 
+$$
+s_1(M,t)=a_1(M)\cos(\omega t-\phi_1(M))
+$$
+$$
+s_2(M,t)=a_2(M)\cos(\omega t-\phi_2(M)
+$$
+avec les amplitudes complexes $\underline{A_1}(M)=a_1\exp(-j\phi_1(M))$ 
+et $\underline{A_2}(M)=a_2\exp(-j\phi_2(M))$. 
+
+
+
+Par principe de superposition, on a $$s(M,t)=s_1(M,t)+s_2(M,t)$$
+avec amplitude complexe $\underline{A}(M,t)$. 
+
+On a donc $\underline{A}(M,t)=\underline{A_1}(M)+\underline{A_2}(M)$, 
+donc l'éclairement $\mathcal{E}$ de $s(M,t)$ satisfait
+\begin{align*}
+    \mathcal{E}(M)=|\underline{A}(M)|^2&=|\underline{A_1}(M)+\underline{A_2}(M)|^2\\
+                &=|a_1\exp(-j\phi_1(M)+a_2\exp(-j\phi_2(M)|^2\\
+                &=|a_1\cos(\phi_1(M))+ja_1\sin(\phi_1(M))+a_2\cos(\phi_2(M))+ja_2\sin(\phi_2(M))|^2\\
+                &=\left(a_1\cos(\phi_1(M))+a_2\cos(\phi_2(M))\right)^2+\left(a_1\sin(\phi_1(M))+a_2\sin(\phi_2(M))\right)^2\\
+                &=a_1^2+a_2^2+2a_1a_2(\cos(\phi_1(M))\cos(\phi_2(M))-\sin(\phi_1(M))\sin(\phi_2(M)))\\
+                &=a_1^2+a_2^2+2a_1a_2\cos(\phi_1(M)-\phi_2(M))\\
+\end{align*}
+En notant $\mathcal{E}_1(M)=a_1^2$ l'éclairement de $s_1(M,t)$, $\mathcal{E}_2(M)=a_2^2$ l'éclairement de $s_2(M,t)$, 
+et $\Delta \phi_{2\backslash 1}(M)$ le déphasage entre les deux signaux, on a 
+$$
+\boxed{\mathcal{E}(M)=\mathcal{E}_1(M)+\mathcal{E}_2(M)+2\sqrt{\mathcal{E}_1(M)\mathcal{E}_2(M)}\cos(\Delta \phi_{2\backslash 1}(M))}
+$$
+On arrive à le même résultat.
+\end{document}

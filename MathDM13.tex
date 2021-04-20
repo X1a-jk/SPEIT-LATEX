@@ -1,0 +1,223 @@
+%%% Ne pas modifier jusqu'à la ligne 25
+\documentclass[a4paper,12pt]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+%%\usepackage{CJK}
+\usepackage{yhmath}
+\usepackage[left=2cm,right=2cm,top=3cm,bottom=2cm, headheight=1.5cm,headsep=1.5cm]{geometry}
+%%\usepackage{CJKutf8}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage{amsmath,amsfonts,amssymb,dsfont}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{enumitem}		%\enumerate-resume
+\usepackage[colorlinks=true,unicode={true},hyperindex=false, linkcolor=blue, urlcolor=blue]{hyperref}
+\newcommand{\myref}[1]{\ref{#1} page \pageref{#1}}
+
+\addto\captionsfrench{\def\tablename{Tableau}}  %légendes des tableaux
+\renewcommand\thesection{\Roman{section}~-~} 
+\renewcommand\thesubsection{\Roman{section}.\Alph{subsection}~-~} 
+\renewcommand\thesubsubsection{\Roman{section}.\Alph{subsection}.\arabic{subsubsection}~-~} 
+
+\newcommand{\conclusion}[1]{\newline \centerline{\fbox{#1}}}
+
+\setcounter{secnumdepth}{3}
+\parindent=0pt
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\lhead{SJTU-ParisTech} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chead{DM}
+\rhead{Daniel 518261910024}
+\begin{document}
+
+\renewcommand{\labelitemi}{$\blacktriangleright$}
+\renewcommand{\labelitemii}{$\bullet$}
+
+
+\section{}
+\subsection{}
+Soient $i \in \mathbb{N}^*$, $a \in \mathbb{Z}$, on a 
+\begin{equation}  \nonumber
+    H_i(a)=\left\{  
+                 \begin{array}{rcl}  
+                    \frac{a\times(a-1)\times \cdots \times(a-i+1)}{i!}=\frac{a!}{i!(a-i)!}=\binom{a}{i} & & a \geq 0\\
+                    (-1)^i \frac{(i-1-a)\times (i-2-a)\times \cdots \times (-a)}{i!}=(-1)^i\frac{(i-1-a)!}{i!(-1-a)!}=(-1)^i\binom{i-1-a}{i} & & a<0\\
+                 \end{array}  
+    \right.  
+\end{equation}
+et on a $H_0=1$. En tous cas, on a $H_i(a) \in \mathbb{Z}$, on en déduit que $\boxed{\forall i \in \mathbb{N}, H_i(\mathbb{Z})\subset \mathbb{Z}}$
+\subsection{}
+soit $i \in \mathbb{N}^*$, on a 
+$$
+deg(H_i)=deg(\frac{a\times(a-1)\times \cdots \times(a-i+1)}{i!})=i
+$$
+et $deg(H_0)=0$
+
+On a alors $\forall i \in \mathbb{N}$, $deg(H_i)=i$. D'après le cours, on a donc \fbox{$(H_i)_{i \in \mathbb{N}}$ est une base de $\mathbb{K}[X]$}
+\subsection{}
+Soient $(P,Q) \in (\mathbb{C}[X])^2$, $\lambda \in \mathbb{C}$, alors 
+\begin{align*}
+\Delta(\lambda P+Q) &=(\lambda P+Q)(X+1)-(\lambda P+Q)(X)\\
+&=\lambda P(X+1)+Q(X+1)-\lambda P(X)-Q(X)\\
+&=\lambda (P(X+1)-P(X))+(Q(X+1)-Q(X))\\
+&=\lambda \Delta(P)+\Delta(Q)
+\end{align*}
+alors \fbox{$\Delta$ est une application linéaire}
+\subsection{}
+Soit $(n,i) \in \mathbb{N}^2$, montrer que 
+\begin{equation}  \nonumber
+    \Delta^n(H_i)=\left\{  
+                 \begin{array}{rcl}  
+                    0 & & i<n\\
+                    1 & & i=n\\
+                     \frac{X\times (X-1)\times \cdots \times (X-i+(n+1))}{(i-n)!} & & i>n\\
+                 \end{array}  
+    \right.  
+\end{equation}
+par récurrence sur $n$
+\begin{itemize}
+    \item initialisation: soit $n=0$, c'est le même que la définition de $H_i$
+    \item hérédité: supposons que le résultat est vrai au rang $n$, pour le rang $n+1$
+    \begin{itemize}
+        \item Si $i=n+1$, alors $i>n$, $\Delta^n(H_i)=\frac{X\times (X-1)\times \cdots \times (X-i+(n+1))}{(i-n)!}=X$, 
+        
+        donc $\Delta^{n+1}(H_i)=\Delta(\Delta^n(H_i))=(X+1)-X=1$
+        \item Si $i<n+1$, alors $i \leq n$, donc $\Delta^n(H_i)$ est un polynôme constant. On a $\Delta^{n+1}(H_i)=\Delta(\Delta^n(H_i))=0$
+        
+        \item Si $i>n+1$, alors $i >n$, donc 
+        \begin{align*}
+            \Delta^{n+1}(H_i)&=\Delta(\Delta^n(H_i))\\
+            &=\frac{(X+1)\times X\times \cdots \times (X-i+(n+2))}{(i-n)!}-\frac{X\times (X-1)\times \cdots \times (X-i+(n+1))}{(i-n)!}\\
+            &=\frac{X\times \cdots \times (X-i+(n+2))}{(i-n)!}((X+1)-(X-i+(n+1)))\\
+            &=\frac{X\times \cdots \times (X-i+(n+2))}{(i-n-1)!}
+        \end{align*}
+        Le résultat est encore vrai au rang $n+1$
+    \end{itemize}
+\end{itemize}
+On en déduit 
+\begin{equation}  \nonumber
+    \Delta^n(H_i)=\left\{  
+                 \begin{array}{rcl}  
+                    0 & & i<n\\
+                     \frac{X\times (X-1)\times \cdots \times (X-i+(n+1))}{(i-n)!}=\boxed{H_{i-n}} & & i \geq n\\
+                 \end{array}  
+    \right.  
+\end{equation}
+Car la famille $(H_i)_{i \in \mathbb{N}}$ est une base de $\mathbb{C}[X]$, soit $P\in \mathbb{C}[X]$ de degré $m>=0$, 
+il s'écrit comme $P=\sum_{k=0}^m a_kH_k$, avec les $a_i \in \mathbb{C}$. 
+
+% Comme $\Delta$ est linéaire, on a donc $$
+% \Delta^m(P)=\Delta^m(\sum_{k=0}^m a_kH_k)=\sum_{k=0}^m a_k\Delta^m(H_k)=a_m\Delta^m(H_m)+0=a_m
+% $$
+% Donc on a 
+% $$
+% P-\Delta^m(P)H_m=\sum_{k=0}^{m-1} a_kH_k
+% $$
+% Donc 
+% $$
+% \Delta^{m-1}(P-\Delta^m(P)H_m)=\Delta^{m-1}(P)-\Delta^m(P)\Delta^{m-1}(H_m)=\sum_{k=0}^{m-1} a_k\Delta^{m-1}(H_k)=a_{m-1}
+% $$
+% donc 
+% $$
+% a_{m-1}=\Delta^{m-1}(P)-X\Delta^m(P)
+% $$
+% Comme $\Delta$ est linéaire, on a donc $$
+% \Delta^m(P)=\Delta^m(\sum_{k=0}^m a_kH_k)=\sum_{k=0}^m a_k\Delta^m(H_k)=a_m\Delta^m(H_m)+0=a_m
+% $$
+
+% Soit $1\leq n\leq m-1$, montrer que 
+% $$
+% a_{m-n}=\Delta^{m-n}(P)+\sum_{i=0}^{n-1}(-1)^{n-i}\Delta^{m-i}(P)\frac{X(X+1)\cdots(X+n-i-1)}{(n-i)!}
+% $$
+% par récurrence
+% \begin{itemize}
+%     \item initialisation: soit $n=1$, on a 
+% $$
+% P-\Delta^m(P)H_m=\sum_{k=0}^{m-1} a_kH_k
+% $$
+% Donc 
+% $$
+% \Delta^{m-1}(P-\Delta^m(P)H_m)=\Delta^{m-1}(P)-\Delta^m(P)\Delta^{m-1}(H_m)=\sum_{k=0}^{m-1} a_k\Delta^{m-1}(H_k)=a_{m-1}
+% $$
+% donc 
+% $$
+% a_{m-1}=\Delta^{m-1}(P)-X\Delta^m(P)
+% $$
+% Le resultat est vrai
+
+% \item hérédité: supposons que le résultat est vrai au rang $n$, pour le rang $n+1$
+
+% On a 
+% \begin{align*}
+% \Delta^{m-n-1}(P)&=\Delta^{m-n-1}\left(\sum_{k=0}^ma_kH_k\right)\\
+% &=\sum_{k=0}^ma_k\Delta^{m-n-1}(H_k)\\
+% &=\sum_{k=m-n-1}^ma_kH_{k-(m-n-1)}\\
+% &=a_{m-n-1}+\sum_{k=m-n}^ma_kH_{k-(m-n-1)}\\
+% &=a_{m-n-1}+\sum_{k=1}^{n+1}a_{m-n-1+k}H_k
+% \end{align*}
+% Donc 
+% \begin{align*}
+%     a_{m-n-1}&=\Delta^{m-n-1}(P)-\sum_{k=1}^{n+1}a_{m-n-1+k}H_k
+% \end{align*}
+
+% Le resultat est vrai au rang $n+1$
+% Finalement, on a 
+% \begin{align*}
+% P&=\sum_{k=0}^ma_kH_k\\
+% &=\sum_{k=0}^ma_{m-k}H_{m-k}\\
+% &=\sum_{k=0}^m\left(\Delta^{m-k}(P)+\sum_{i=0}^{k-1}(-1)^{k-i}\Delta^{m-i}(P)\frac{X(X+1)\cdots(X+k-i-1)}{(k-i)!}\right)H_{m-k}\\
+% &=\boxed{\Delta^m(P)H_m+\sum_{k=0}^{m-1}\left(\Delta^{k}(P)+\sum_{i=0}^{m-k-1}(-1)^{m-k-i}\Delta^{m-i}(P)\frac{X(X+1)\cdots(X+m-k-i-1)}{(m-k-i)!}\right)H_{k}}
+% \end{align*}
+On a $\forall n \in [\![0,m]\!]$, $\Delta^n(P)=a_n+\sum_{k=n+1}^ma_kH_k$, donc 
+$\Delta^n(P)(0)=a_n+\sum_{k=n+1}^ma_kH_k(0)=a_n$
+On a donc les coordonnées de $P$ dans cette base est $\boxed{(P(0),\Delta(P)(0),\cdots,\Delta^m(P)(0))}$
+
+% \end{itemize}
+
+\subsection{}
+Supposons que $m \in \mathbb{N}, P=\sum_{i=0}^m a_iH_i$
+\begin{itemize}
+    
+    \item sens indirect: soient $(a_i)_{i \in [\![0,m]\!]}$ entiers, soit $a \in \mathbb{Z}$, car $\forall i  \in [\![0,m]\!]$, $H_i(a) \in \mathbb{Z}$, 
+    donc $\forall i  \in [\![0,m]\!]$, $a_iH_i(a) \in \mathbb{Z}$, donc $P(a) \in \mathbb{Z}$. Donc $P(\mathbb{Z}) \subset \mathbb{Z}$
+    \item sens direct: supposons que $\forall a \in \mathbb{Z}$, $P(a) \in \mathbb{Z}$， Montrer que <<$\forall n \in [\![0,m]\!], (a_i)_{i \in [\![0,n]\!]}\in \mathbb{Z}$>> par récurrence
+    \begin{itemize}
+        \item $n=0$: $P(0)=\sum_{i=0}^m a_iH_i(0)=a_0 \in \mathbb{Z}$
+        \item Supposons que $(a_i)_{i \in [\![0,n]\!]}\in \mathbb{Z}$, 
+        on a 
+        $$
+        P-\sum_{k=0}^na_kH_k=\sum_{k=n+1}^ma_kH_k
+        $$
+        Donc 
+        $$
+        \Delta^{n+1}\left(P-\sum_{k=0}^na_kH_k\right)=\Delta^{n+1}\left(\sum_{k=n+1}^ma_kH_k\right)
+        $$
+        Donc $a_{n+1}=\Delta^{n+1}(P)(0) \in \mathbb{Z}$
+    \end{itemize}
+\end{itemize}
+Finalement, on a $P(\mathbb{Z}) \in \mathbb{Z}$ si et seulement si les coordonnées sont entières
+
+\subsection{}
+On a $\Delta(X+1)=1=\Delta(X+2)$, donc \fbox{$\Delta$ n'est pas injective}
+
+Pour $P=\sum_{i=0}^{m+1}b_iX^i \in \mathbb{C}[X]$, on va chercher $Q=\sum_{i=0}^{m+1}a_iX^i \in \mathbb{C}[X]$ tel que $Q=P(X+1)-P(X)$
+
+On a 
+\begin{align*}
+    P(X+1)-P(X)&=\sum_{i=0}^{m+1}b_i(X+1)^i-\sum_{i=0}^{m+1}b_iX^i\\
+    &=\sum_{i-0}^{m+1}b_i\sum_{j=0}^i\binom{i}{j}X^j-\sum_{i=0}^{m+1}b_iX^i\\
+    &=\sum_{i-0}^{m+1}b_i\left(-X^i+\sum_{j=0}^i\binom{i}{j}X^j\right)\\
+    &=\sum_{i-0}^{m+1}b_i\left(\sum_{j=0}^{i-1}\binom{i}{j}X^j\right)\\
+    &=\sum_{i-0}^{m}b_{i+1}\left(\sum_{j=0}^i\binom{i+1}{j}X^j\right)\\
+    &=\sum_{j=0}^m\left(\sum_{i=j+1}^{m+1}\binom{i}{j}b_i\right)X^j
+\end{align*}
+en faisant une sommation des paquets(de somme finie a termes positifs)
+
+Alors pour tout $ P=\sum_{i=0}^{m+1}b_iX^i \in \mathbb{C}[X]$, il existe $Q=\sum_{j=0}^{m}a_jX^j \in \mathbb{C}[X]$, avec 
+$\forall j \in [\![0,m]\!], a_j=\sum_{i=j+1}^{m+1}\binom{i}{j}b_i$ tel que $Q=P(X+1)-P(X)$, donc \fbox{$\Delta$ est surjective}
+
+ \end{document}

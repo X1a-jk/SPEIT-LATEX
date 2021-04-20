@@ -1,0 +1,133 @@
+%%% Ne pas modifier jusqu'à la ligne 25
+\documentclass[a4paper,12pt]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+%%\usepackage{CJK}
+\usepackage{yhmath}
+\usepackage[left=2cm,right=2cm,top=3cm,bottom=2cm, headheight=1.5cm,headsep=1.5cm]{geometry}
+%%\usepackage{CJKutf8}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage{amsmath,amsfonts,amssymb,dsfont}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{enumitem}		%\enumerate-resume
+\usepackage[colorlinks=true,unicode={true},hyperindex=false, linkcolor=blue, urlcolor=blue]{hyperref}
+\newcommand{\myref}[1]{\ref{#1} page \pageref{#1}}
+
+\addto\captionsfrench{\def\tablename{Tableau}}  %légendes des tableaux
+\renewcommand\thesection{\Roman{section}~-~} 
+\renewcommand\thesubsection{\Roman{section}.\Alph{subsection}~-~} 
+\renewcommand\thesubsubsection{\Roman{section}.\Alph{subsection}.\arabic{subsubsection}~-~} 
+
+\newcommand{\conclusion}[1]{\newline \centerline{\fbox{#1}}}
+
+\setcounter{secnumdepth}{3}
+\parindent=0pt
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\lhead{SJTU-ParisTech} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chead{DM4}
+\rhead{Daniel 518261910024}
+
+\begin{document}
+\renewcommand{\labelitemi}{$\blacktriangleright$}
+\renewcommand{\labelitemii}{$\bullet$}
+
+
+
+\section{Exercice 1}
+Notons $B$ l’évènement correspondant à « le téléphone est défectueux » et 
+$A$ l’évènement correspondant à « le test est positif ». On veut calculer 
+la probabilité si le test soit efficace, c’est-à-dire $\mathbb{P}(B|A)$. D’après
+les données,
+$$\mathbb{P}(B) = \frac{1}{10000}\,\,\,\mathbb{P}(\overline{B}) = \frac{9999}{10000}$$
+
+On a aussi $\mathbb{P}(A|B)=99\%$ et $\mathbb{P}(A|\overline{B})=0.1\%$, 
+
+or $B$ et $\overline{B}$ est un système complet d'évènement($\mathbb{P}(\overline{B})>0, \mathbb{P}(B)>0$), 
+on a 
+$$\mathbb{P}(A)=\mathbb{P}(A|B)\mathbb{P}(B)+\mathbb{P}(A|\overline{B})\mathbb{P}(\overline{B})>0$$
+donc 
+
+
+
+\begin{align*}    
+    \mathbb{P}(B|A)&=\frac{\mathbb{P}(A|B)\mathbb{P}(B)}{\mathbb{P}(A)}\\
+                   &=\frac{\mathbb{P}(A|B)\mathbb{P}(B)}{\mathbb{P}(A|B)\mathbb{P}(B)+\mathbb{P}(A|\overline{B})\mathbb{P}(\overline{B})}\\
+                   &=\frac{99\%*\frac{1}{10000}}{99\%*\frac{1}{10000}+0.1\%*\frac{9999}{10000}}
+\end{align*}
+
+Finalement, on a $\boxed{\mathbb{P}(B|A)=9\%}$, le résultat n'est pas satisfaisant.
+\section{Exercice 2}
+\subsection{}
+On a clairement que $\forall (n,k) \in \mathbb{N}^2$, pour une variable aléatoire $X$, 
+
+$$(X>n+k)=\{a \in \mathbb{N}, a>n+k\} \subset \{a \in \mathbb{N}, a>n\}=(X>n)$$
+
+On a donc $(X>n+k) \cap (X>n)=(X>n+k)$. Alors, 
+$$
+\mathbb{P}(X>n+k)=\mathbb{P}((X>n+k) \cap (X>n))=\mathbb{P}(X>n+k|X>n)\mathbb{P}(X>n)
+$$
+Par la définition de « sans mémoire », on a donc $\boxed{\mathbb{P}(X>n+k)=\mathbb{P}(X>k)\mathbb{P}(X>n)}$
+\subsection{}
+\subsubsection{}
+Lorsque $X$ suit une loi géométrique de paramètre $p \in ]0,1[$, 
+on a $\forall k \in \mathbb{N}^{*}, \mathbb{P}(X=k)=p(1-p)^{k-1}$. 
+
+Et on a $(X>n+k)=\bigcup_{i>n+k}(X=i)$, une union dénombrable et disjoint deux-à-deux.
+
+Donc 
+$$
+\mathbb{P}(X>n+k)=\sum_{i>n+k}\mathbb{P}(X=i)=\sum_{i=n+k+1}^{+\infty}p(1-p)^{i-1}
+$$
+Or $p \in ]0,1[$, la somme converge, et on a $\mathbb{P}(X>n+k)=(1-p)^{n+k}$. 
+Par la même méthode, on a $\mathbb{P}(X>n)=(1-p)^{n}, \mathbb{P}(X>k)=(1-p)^{k}$. 
+Nous avons bien $\mathbb{P}(X>n+k)=\mathbb{P}(X>n)\mathbb{P}(X>k)$, ce qui montre que $X$ est sans mémoire.
+\subsubsection{}
+Si on suppose que $X$ modélise le rang du premier succès lors d’une succession d’épreuves de Bernoulli
+indépendantes de paramètre $p$, l'évènement $(X>n+k)$ correspondant « on obtient le premier succès après $n+k$ fois ». 
+On peut aussi obtenir le même résultat si d'abord on fait $n$ fois la succession sans succès: $(X>n)$, et ensuite, on 
+fait une autre succession pour $k$ fois: $(X>k)$. Car ces deux étapes sont indépendantes, sa possibilité est calculée par 
+multiplication. On a donc le même résultat: $\boxed{\mathbb{P}(X>n+k)=\mathbb{P}(X>n)\mathbb{P}(X>k)}$
+
+\subsection{}
+\subsubsection{}
+Si on prend $k=0$, la formule devient $\forall n \in \mathbb{N}, \mathbb{P}(X>n)=\mathbb{P}(X>n)\mathbb{P}(X>0)$. 
+
+Or $\forall n \in \mathbb{N}, \mathbb{P}(X>n)>0$, on a donc $\boxed{\mathbb{P}(X>0)=1}$
+\subsubsection{}
+On va prendre $p=\mathbb{P}(X=1)$
+\begin{itemize}
+    \item $p=\mathbb{P}(X=1)>0$ car c'est une possibilité.
+    \item $(X>0)=(X=1) \cup (X>1)$ une union dénombrable et disjoint, donc 
+          
+          $1=\mathbb{P}(X>0)=\mathbb{P}(X=1)+\mathbb{P}(X>1)$, d'où $\mathbb{P}(X=1)=1-\mathbb{P}(X>1)<1$
+\end{itemize}
+On a donc $p \in ]0,1[$, et on a $\mathbb{P}(X>1)=1-p$
+
+On va montrer l'énoncé par récurrence sur $n$
+\begin{itemize}
+    \item $n=0$: $\mathbb{P}(X>0)=(1-p)^0=1$, on l'a montrée
+    \item Suppose que $\mathbb{P}(X>n)=(1-p)^n$, donc par la définition de sans mémoire, on a 
+          $$\mathbb{P}(X>n+1)=\mathbb{P}(X>n)\mathbb{P}(X>1)=(1-p)^n*(1-p)=(1-p)^{n+1}$$
+          l'énoncé est encore valide
+\end{itemize}
+On a donc $\boxed{\mathbb{P}(X>n)=(1-p)^n}$
+\subsubsection{}
+On a montré que $\mathbb{P}(X>0)=1$
+
+$\forall n \in \mathbb{N}^{*}, (X>n-1)=(X=n) \cup (X>n)$ une union dénombrable et disjoint, donc 
+          
+$p=\mathbb{P}(X>n-1)=\mathbb{P}(X=n)+\mathbb{P}(X>n)$, d'où $\mathbb{P}(X=n)=\mathbb{P}(X>n-1)-\mathbb{P}(X>n)$
+et on a montré que $\mathbb{P}(X>n-1)=(1-p)^{n-1}$, $\mathbb{P}(X>n)=(1-p)^{n}$, et donc 
+$$
+\mathbb{P}(X=n)=(1-p)^{n-1}-(1-p)^{n}=p*(1-p)^{n-1}
+$$
+En conclusion, $\forall n \in \mathbb{N}^{*}$, $\mathbb{P}(X=n)=p*(1-p)^{n-1}$
+
+Or $p \in ]0,1[$, on a $\boxed{P \sim \mathscr{G}(p)}$
+\end{document}

@@ -1,0 +1,137 @@
+%%% Ne pas modifier jusqu'à la ligne 25
+\documentclass[a4paper,12pt]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+%%\usepackage{CJK}
+\usepackage{yhmath}
+\usepackage[left=2cm,right=2cm,top=3cm,bottom=2cm, headheight=1.5cm,headsep=1.5cm]{geometry}
+%%\usepackage{CJKutf8}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage{amsmath,amsfonts,amssymb,dsfont}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{enumitem}		%\enumerate-resume
+\usepackage[colorlinks=true,unicode={true},hyperindex=false, linkcolor=blue, urlcolor=blue]{hyperref}
+\newcommand{\myref}[1]{\ref{#1} page \pageref{#1}}
+
+\addto\captionsfrench{\def\tablename{Tableau}}  %légendes des tableaux
+\renewcommand\thesection{\Roman{section}~-~} 
+\renewcommand\thesubsection{\Roman{section}.\Alph{subsection}~-~} 
+\renewcommand\thesubsubsection{\Roman{section}.\Alph{subsection}.\arabic{subsubsection}~-~} 
+
+\newcommand{\conclusion}[1]{\newline \centerline{\fbox{#1}}}
+
+\setcounter{secnumdepth}{3}
+\parindent=0pt
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\lhead{SJTU-ParisTech} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chead{DM}
+\rhead{Daniel 518261910024}
+\begin{document}
+
+\renewcommand{\labelitemi}{$\blacktriangleright$}
+\renewcommand{\labelitemii}{$\bullet$}
+
+
+\section{}
+\subsection{}
+Pour tout $n \in \mathbb{N}$, on pose $u_n=\frac{1}{n^\alpha}z^n$. Pour $z \neq 0$, $u_n(z) \neq 0$, donc 
+$$
+\left|\frac{u_{n+1}}{u_n}\right|=\left|\frac{\frac{1}{(n+1)^\alpha}z^{n+1}}{\frac{1}{(n)^\alpha}z^{n}}\right|=\left|(\frac{n}{n+1})^\alpha z\right|\xrightarrow[n \to +\infty]{}|z|
+$$
+Par le critère de d'Alembert
+
+$\sum u_n(z)$ est absolument convergente lorsque $|z|<1$
+
+$\sum u_n(z)$ est grossièrement divergente lorsque $|z|>1$
+
+On a donc $\boxed{R(\sum \frac{1}{n^\alpha}z^n)=1}$
+
+\subsection{}
+Pour tout $n \in \mathbb{N}$, on pose $u_n=n!\times z^{n^2}$. Pour $z \neq 0$, $u_n(z) \neq 0$, donc 
+$$
+\left|\frac{u_{n+1}}{u_n}\right|=\left|(n+1)\times z^{2n+1}\right|%\xrightarrow[n \to +\infty]{}|z|
+$$
+Par le critère de d'Alembert
+
+lorsque $|z|<1$, $\left|(n+1)\times z^{2n+1}\right|\xrightarrow[n \to +\infty]{}0$, $\sum u_n(z)$ est absolument convergente
+
+lorsque $|z|\geq 1$, $\left|(n+1)\times z^{2n+1}\right|\xrightarrow[n \to +\infty]{}+\infty$, $\sum u_n(z)$ est grossièrement divergente
+
+On a donc $\boxed{R(\sum n!\times z^{n^2})=1}$
+
+\subsection{}
+Pour tout $n \in \mathbb{N}$, on pose $u_n=n!\times z^{n!}$. Pour $z \neq 0$, $u_n(z) \neq 0$, donc 
+$$
+\left|\frac{u_{n+1}}{u_n}\right|=\left|(n+1)\times z^{n \times n!}\right|%\xrightarrow[n \to +\infty]{}|z|
+$$
+Par le critère de d'Alembert
+
+lorsque $|z|<1$, $\left|(n+1)\times z^{n \times n!}\right|\xrightarrow[n \to +\infty]{}0$, $\sum u_n(z)$ est absolument convergente
+
+lorsque $|z|\geq 1$, $\left|(n+1)\times z^{n \times n!}\right|\xrightarrow[n \to +\infty]{}+\infty$, $\sum u_n(z)$ est grossièrement divergente
+
+On a donc $\boxed{R(\sum n!\times z^{n!})=1}$
+
+\section{}
+\subsection{}
+Pour tout $n \in \mathbb{N}$, on pose $u_n=\frac{z^{n+1}}{n+1}$. Pour $z \neq 0$, $u_n(z) \neq 0$, donc 
+$$
+\left|\frac{u_{n+1}}{u_n}\right|=\left|(\frac{n+1}{n+2})\times z\right|\xrightarrow[n \to +\infty]{}|z|
+$$
+Par le critère de d'Alembert
+
+$\sum u_n(z)$ est absolument convergente lorsque $|z|<1$
+
+$\sum u_n(z)$ est grossièrement divergente lorsque $|z|>1$
+
+On a donc $\boxed{R(\sum \frac{z^{n+1}}{n+1})=1}$
+\subsection{}
+On a $x=|z| \in \mathbb{R_+}$, donc 
+\begin{itemize}
+    \item lorsque $x>1$, $\sum u_n(z)$ est grossièrement divergente
+    \item lorsque $x<1$, on note $$
+    S(x)=\sum_{n \geq 0} \frac{z^{n+1}}{n+1}=\sum_{n \geq 0}\frac{e^{(n+1)i\theta}}{n+1}x^{n+1}
+    $$
+    la série dérivée est donc $\sum_{n \geq 0}e^{(n+1)i\theta}x^n $, de même rayon de convergence $R=1$. 
+
+    Pour tout $x \in [0,1[$, on a donc 
+    $$
+    S^{'}(x)=\sum_{n = 0}^{+ \infty}e^{(n+1)i\theta}x^n=e^{i\theta}\sum_{n = 0}^{+ \infty}(e^{i\theta}x)^n=\frac{e^{i\theta}}{1-xe^{i\theta}}
+    $$
+    car $|e^{i\theta}x|=|e^{i\theta}||x|<1$
+    Donc $$
+    S(x)=-\ln(1-e^{i\theta}x)+C
+    $$
+    Comme $S(0)=0$, on a $C=0$, donc $S(x)=-\ln(1-e^{i\theta}x)$
+    \item lorsque $x=1$, $S(x)=\sum_{n \geq 0}\frac{e^{(n+1)i\theta}}{n+1}$. On sait que cette série converge sauf en $z=1$ d'après le cours.
+\end{itemize}
+
+
+\subsection{}
+% Soient $\theta \in ]0,2\pi[$, $N \in \mathbb{N}$, on a donc 
+% \begin{align*}
+% \sum_{n=0}^{N} \frac{e^{(n+1)i\theta}}{n+1}&=\sum_{n=1}^{N+1} \frac{e^{ni\theta}}{n}\\
+% &=\frac{1}{N+1}\sum_{p=0}^{N+1}e^{ip\theta}+\sum_{k=2}^{N+1}\left[\left(\frac{1}{k-1}-\frac{1}{k}\right)\times \sum_{p=0}^{k-1}e^{ip\theta}\right]
+% \end{align*}
+% et on a $\forall A \in \mathbb{N}$, $\left|\sum_{p=0}^{A}e^{ip\theta}\right|\leq \frac{1}{|\sin\frac{\theta}{2}|}$
+
+% Donc on a 
+% \begin{align*}
+%     \sum_{n=0}^{N} \frac{e^{(n+1)i\theta}}{n+1} &\xrightarrow[N \to +\infty]{}
+%     0+\frac{1}{|\sin\frac{\theta}{2}|}\sum \frac{1}{k^2}\\
+%     &=\frac{1}{|\sin\frac{\theta}{2}|}
+%     \end{align*}
+Soient $\theta \in ]0,2\pi[$, on a $x=|z|=1$. Par les résultats précédents, on a $\sum_{n=0}^{+\infty} \frac{e^{(n+1)i\theta}}{n+1}$ converge, et 
+par continuité radicale, on a 
+$$
+\boxed{\sum_{n=0}^{+\infty} \frac{e^{(n+1)i\theta}}{n+1}=\lim_{x\to 1^-}S(x)=-(1-e^{i\theta})}
+$$
+
+
+ \end{document}

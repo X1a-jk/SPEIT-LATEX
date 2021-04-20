@@ -1,0 +1,197 @@
+%%% Ne pas modifier jusqu'à la ligne 25
+\documentclass[a4paper,12pt]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+%%\usepackage{CJK}
+\usepackage{yhmath}
+\usepackage[left=2cm,right=2cm,top=3cm,bottom=2cm, headheight=1.5cm,headsep=1.5cm]{geometry}
+%%\usepackage{CJKutf8}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage{amsmath,amsfonts,amssymb,dsfont}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{enumitem}		%\enumerate-resume
+\usepackage[colorlinks=true,unicode={true},hyperindex=false, linkcolor=blue, urlcolor=blue]{hyperref}
+\newcommand{\myref}[1]{\ref{#1} page \pageref{#1}}
+
+\addto\captionsfrench{\def\tablename{Tableau}}  %légendes des tableaux
+\renewcommand\thesection{\Roman{section}~-~} 
+\renewcommand\thesubsection{\Roman{section}.\Alph{subsection}~-~} 
+\renewcommand\thesubsubsection{\Roman{section}.\Alph{subsection}.\arabic{subsubsection}~-~} 
+
+\newcommand{\conclusion}[1]{\newline \centerline{\fbox{#1}}}
+
+\setcounter{secnumdepth}{3}
+\parindent=0pt
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\lhead{SJTU-ParisTech} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chead{DM}
+\rhead{Daniel 518261910024}
+\begin{document}
+
+\renewcommand{\labelitemi}{$\blacktriangleright$}
+\renewcommand{\labelitemii}{$\bullet$}
+
+
+\section{Exercice 1}
+On note $U=\{u_n,n\in \mathbb{N}\} \cap \{l\}$, soit $(a_n)_{n \in \mathbb{N}}$ une suite de $U$. On va distinguer 2 cas.
+\begin{itemize}
+    \item Sit $\forall \epsilon>0, \exists N \in \mathbb{N}, n \geq N \Rightarrow d(a_n,l)\leq \epsilon$. On peut prendre $(\epsilon_n)_{n \in \mathbb{N}}$ tel que 
+    $\forall n \in \mathbb{N}$, $\epsilon_n=2^{-n}$, on peut donc construire $\varphi(n)$ par récurrence:
+    \begin{itemize}
+        \item $n=0$, $\epsilon_0=1$. Par notre hypothèse, il existe $N_0 \in \mathbb{N}$ tel que $\forall n\geq N_0$, $d(a_n,l)\leq 1$. 
+        On peut prendre $\varphi(0)=N_0$, on a bien $d(a_{\varphi(0),l})\leq \epsilon_0$
+        \item Supposons que on a construit $\varphi(n)$. Pour le rang $n+1$, on a $\exists N_{n+1} \in \mathbb{N}$ tel que $\forall n \geq N_{n+1}$, $d(a_{n},l)\leq \epsilon_{n+1}=2^{-(n+1)}$. 
+        On peut prendre $\varphi(n+1)=max(\varphi(n)+1,N_{n+1})$. Alors $\varphi(n+1)>\varphi(n)$, et $d(a_{\varphi(n+1)},l)\leq \epsilon_{n+1}$
+    \end{itemize}
+    On obtient donc une extraction $\varphi$ telle que $\forall n \in \mathbb{N}$, $d(a_{\varphi(n)},l)\leq \epsilon_n=2^{-n}$, donc
+    $$
+    d(a_{\varphi(n)},l)\xrightarrow[n \to +\infty]{}0 
+    $$
+    donc 
+    $$
+    a_\varphi(n)\xrightarrow[n \to +\infty]{}l   
+    $$
+    $(a_n)_{n \in \mathbb{N}}$ admet donc une valeur d'adhérence
+    \item Sinon, c'est-à-dire $\exists \epsilon>0, \forall N \in \mathbb{N}, \exists n \geq N, d(a_n,l)> \epsilon$. On fixe tel $\epsilon$. 
+    
+    Comme on a 
+    $$
+    u_\varphi(n)\xrightarrow[n \to +\infty]{}l   
+    $$
+    alors pour cette $\epsilon$, il existe $N \in \mathbb{N}$ tel que $\forall n > N$, $d(u_n,l)< \epsilon$. Donc on a 
+    $$
+    card(\{n \in \mathbb{N}|d(u_n,l)>\epsilon\})\leq N+1
+    $$
+    le cardinal est donc fini. On fixe tel $N$
+
+    Alors soit $n \geq N$ tel que $d(a_n,l) \geq \epsilon$  il existe $i \in [\![0,N]\!]$ tel que 
+    $$
+    card(\{n \in \mathbb{N}|a_n=u_i\})=+\infty
+    $$
+    car $(a_n)_{n \in \mathbb{N}}$ est une suite de $U$
+
+    On peut donc construire une extraction $\varphi$ telle que 
+    $$
+    \forall n \in \mathbb{N}, \varphi(n)=u_i
+    $$ 
+    On a donc la suite-extraite  $(a_{\varphi(n)})_{n \in \mathbb{N}}$ converge vers $u_i$, $(a_n)_{n \in \mathbb{N}}$ admet donc une valeur d'adhérence. 
+\end{itemize}
+
+En tous cas, $(a_n)_{n \in \mathbb{N}}$ admet donc une valeur d'adhérence. Donc $U$ est un compact de $(E,d)$
+\section{Exercice 2}
+\subsection{}
+Soit $(y_n)_{n \in \mathbb{N}}$ une suite de $f(F)$ qui converge vers $y \in E$, montrons que $y \in f(F)$. 
+
+Soit $n \in \mathbb{N}$, or $y_n \in f(F)$, il existe $x_n \in F$ tel que $y_n=f(x_n)$. Selon l'exercice $1$, on a 
+$Y=\{y_n,n \in \mathbb{N}\}\cup \{y\}$ est un compact de $(E,d)$. Comme $f$ est propre, on a $X=f^{-1}(Y)$ est un compact de $(E,d)$. Comme 
+$(x_n)_{n \in \mathbb{N}}$ est une suite de $X$, alors il existe une extraction $\varphi$ est $x \in E$ tels que 
+$$
+x_{\varphi(n)}\xrightarrow[n \to +\infty]{}x
+$$
+De plus, $x \in F$ car $F$ est un fermé de $(E,d)$. Comme $f$ est continue, on a donc 
+$$
+f(x_{\varphi(n)})=y_{\varphi(n)}\xrightarrow[n \to +\infty]{}f(x) \in f(F)
+$$ 
+$f(x)$ est donc une valeur d'adhérence de $(y_n)_{n \in N}$. Comme $(y_n)_{n \in N}$ converge, la valeur d'adhérence est unique, donc $y=f(x)\in f(F) $. 
+
+On en déduit que \fbox{$f(F)$ est un fermé de $(E,d)$}
+
+\subsection{}
+\begin{itemize}
+    \item sens direct: Soient $f$ est propre et $M\geq 0$, alors comme $BF(0,M)$ est un compact de $(E,\Vert\cdot\Vert)$, donc 
+    $f^{-1}(BF(0,M))$ est un conpact par notre hypothèse, il est donc borné. Donc il existe $m\geq 0$ tel que $f^{-1}(BF(0,M)) \subset BF(0,m)$. 
+    On en déduit que 
+    $$
+    f(x) \in BF(0,M) \Rightarrow x \in BF(0,m)
+    $$ 
+    c'est-à-dire 
+    $$
+    x \notin BF(0,m) \Rightarrow f(x) \notin BF(0,M)
+    $$
+    On a donc 
+    $$\forall M \geq 0, \exists m \geq 0, \Vert x\Vert > m \Rightarrow \Vert f(x)\Vert > M  $$
+
+    C'est équivalent à 
+    $$
+    \Vert f(x) \Vert \xrightarrow[\Vert x \Vert \to +\infty]{} +\infty
+    $$
+    \item sens indirect: Soit $K$ est un compact de $(E,\Vert\cdot\Vert)$, il est donc fermé et borné de $(E,\Vert\cdot\Vert)$. Comme $f$ est continue, $f^{-1}(K)$ est donc un fermé de $(E,\Vert\cdot\Vert)$
+    
+    Montrons que $f^{-1}(K)$ est borné de $(E,\Vert\cdot\Vert)$. 
+
+    Or $K$ est borné, il existe $M>0$ tel que $K \subset BO(0,M)$. Car $\Vert f(x) \Vert \xrightarrow[\Vert x \Vert \to +\infty]{} +\infty$, donc il existe 
+    $m>0$ tel que $f(x) \subset BO(0,m)\Rightarrow x \subset BO(0,m)$, ce qui implique que $f^{-1}(BO(0,M))\subset BO(0,m)$. 
+
+    On a donc $f^{-1}(K) \subset f^{-1}(BO(0,M))\subset BO(0,m)$, il est donc borné. On en déduit que $f^{-1}(K)$ est un compact de $(E,\Vert\cdot\Vert)$
+\end{itemize}
+Finalement, on en déduit que 
+$$
+f \,\mbox{est propre} \Leftrightarrow \Vert f(x) \Vert \xrightarrow[\Vert x \Vert \to +\infty]{} +\infty
+$$
+\section{Exercice 3}
+\subsection{}
+Soient $(f,g) \in E^2$, $\lambda \in \mathbb{R}$, donc soit $x \in [0,1]$, on a 
+\begin{align*}
+    \phi(f+\lambda g)(x)&=\int_0^x t (f+\lambda g)(t)\,dt+x\int_x^1(f+\lambda g)(t)\,dt\\
+    &=\int_0^x t f(t)\,dt+x\int_x^1f(t)\,dt+\lambda\left(\int_0^x t g(t)\,dt+x\int_x^1g(t)\,dt\right)\\
+    &=\phi(f)(x)+\lambda\phi(g)(x)
+\end{align*}
+On a donc $\phi(f+\lambda g)=\phi(f)+\lambda\phi(g)$
+
+De plus $x \mapsto \int_0^x t f(t)\,dt$ et $x \mapsto \int_x^1 f(t)\,dt$ sont continues car elles sont dérivables. 
+Donc $\phi(f) \in E$  car tous ses composants sont continues par addition et multiplication. Donc $\boxed{\phi \in \mathcal{L}(E)}$
+
+\subsection{}
+Soit $f \in E$, comme $f$ est continue sur $[0,1]$, sa borne supérieure est atteinte, on la note $A=\sup_{x \in [0,1]}|f(x)|$.
+
+Soit $x \in [0,1]$ fixé, soit $t \in [0,x]$, on a donc $|tf(t)|\leq tA$. En intégrant, on a 
+$$
+\left|\int_0^x tf(t)\,dt\right| \leq\int_0^x |tf(t)|\,dt \leq \int_0^x tA\,dt=A\int_0^x t\,dt=\frac{1}{2}Ax^2
+$$
+De même, 
+$$
+\left|x\int_x^1f(t)\,dt\right|\leq x\int_x^1A\,dt=Ax(1-x)
+$$
+On a donc 
+$$
+\left|\int_0^x t f(t)\,dt+x\int_x^1f(t)\,dt\right| \leq \left|\int_0^x t f(t)\,dt\right|+\left|x\int_x^1f(t)\,dt\right| \leq (x-\frac{1}{2}x^2)A
+$$
+cette inégalité est valide pour tout $x \in [0,1]$, on a donc $x-\frac{1}{2}x^2\leq \frac{1}{2}$, donc 
+$$
+\forall x \in [0,1],\left|\int_0^x t f(t)\,dt+x\int_x^1f(t)\,dt\right| \leq \frac{1}{2}A
+$$
+En passant à la limite, on obtient 
+$$
+\sup_{x \in [0,1]}\left(\left|\int_0^x t f(t)\,dt+x\int_x^1f(t)\,dt\right|\right) \leq \frac{1}{2}A
+$$
+Donc on a 
+$$
+\Vert \phi(f)\Vert_\infty \leq \frac{1}{2} \Vert f \Vert_\infty
+$$
+Donc $\phi$ est continue sur E car elle est une application linéaire. 
+
+\subsection{}
+Comme $\phi$ est continue sur E
+$$
+|||\phi|||=\sup_{f \in E \backslash \{0_E\}} \frac{\Vert \phi(f)\Vert_\infty}{\Vert f \Vert_\infty}
+$$
+est bien définie, et on a $|||\phi|||\leq \frac{1}{2}$. 
+
+Si on prend $f: t\in[0,1] \mapsto 1$, on a $f\in E$, et $\Vert f \Vert_\infty=\sup_{t \in [0,1]}f(t)=1$. 
+
+De plus, soit $x \in [0,1]$
+$$
+\phi(f(x))=\int_0^x t\,dt+x\int_x^1\,dt=x-\frac{1}{2}x^2
+$$
+Donc $\Vert \phi(f)\Vert_\infty=\sup_{x \in [0,1]}\phi(f(x))=\frac{1}{2}$. On a donc $\frac{\Vert \phi(f)\Vert_\infty}{\Vert f \Vert_\infty}=\frac{1}{2}$, donc $|||\phi|||\geq \frac{1}{2}$. 
+
+Par double inégalité, on obtient $\boxed{|||\phi|||= \frac{1}{2}}$
+
+
+ \end{document}

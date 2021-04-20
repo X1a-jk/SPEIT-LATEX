@@ -1,0 +1,168 @@
+%%% Ne pas modifier jusqu'à la ligne 25
+\documentclass[a4paper,12pt]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+%%\usepackage{CJK}
+\usepackage{yhmath}
+\usepackage[left=2cm,right=2cm,top=3cm,bottom=2cm, headheight=1.5cm,headsep=1.5cm]{geometry}
+%%\usepackage{CJKutf8}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage{amsmath,amsfonts,amssymb,dsfont}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{enumitem}		%\enumerate-resume
+\usepackage[colorlinks=true,unicode={true},hyperindex=false, linkcolor=blue, urlcolor=blue]{hyperref}
+\newcommand{\myref}[1]{\ref{#1} page \pageref{#1}}
+
+\addto\captionsfrench{\def\tablename{Tableau}}  %légendes des tableaux
+\renewcommand\thesection{\Roman{section}~-~} 
+\renewcommand\thesubsection{\Roman{section}.\Alph{subsection}~-~} 
+\renewcommand\thesubsubsection{\Roman{section}.\Alph{subsection}.\arabic{subsubsection}~-~} 
+
+\newcommand{\conclusion}[1]{\newline \centerline{\fbox{#1}}}
+
+\setcounter{secnumdepth}{3}
+\parindent=0pt
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\lhead{SJTU-ParisTech} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chead{DM3}
+\rhead{Daniel 518261910024}
+
+\begin{document}
+\renewcommand{\labelitemi}{$\blacktriangleright$}
+\renewcommand{\labelitemii}{$\bullet$}
+
+
+\section{le « paradoxe » des anniversaires}
+\subsection{}
+\subsubsection{}
+Lorsque l'on tire successivement au hasard n jetons avec remise
+parmi M jetons numérotés de 1 à M, on peut modélise $\boxed{\Omega=\{1,2,\cdots,M\}^n}$, 
+
+muni de \fbox{la probabilité uniforme $\mathbb{P}$} car c'est une situation d’équiprobabilité.
+\subsubsection{}
+$A_n \subset \Omega$ signifie que «$A_n$ contient $n$ éléments tous distincts»
+
+C'est-à-dire \fbox{$A_n$ contient des n-arrangements de $\{1,2,\cdots,M\}$}
+\subsubsection{}
+Il y a $M^n$ n-uplets de $\{1,2,\cdots,M\}$ qui contient $M$ éléments, 
+et $\frac{M!}{(M-n)!}$ n-arrangements lorsque $n \leq M$, 
+ou $0$ n-arrangements de $\Omega$ lorsque $n > M$. Comme $\mathbb{P}$ est la possibilité uniforme, 
+
+Finalement, 
+\begin{equation}  \nonumber
+    \mathbb{P}(A_n)=\frac{\#A_n}{\#\Omega}=\left\{  
+                 \begin{array}{ccc}  
+                 \frac{M!}{(M-n)!M^n} & & n \leq M\\  
+                 0 & & n > M   
+                 \end{array}  
+    \right.  
+\end{equation}
+En fait, si l'on tire successivement au moins $M+1$ fois, la répétition est inévitable.
+
+\subsection{}
+\subsubsection{}
+On modélise la situation par $\Omega=\{1,\cdots,365\}^n$, $\mathbb{P}$ la possibilité uniform sur $\Omega$.
+
+
+Soit $A_n$ est l'événement que parmi une classe de $n$ élèves, au moins deux étudiants soient nés le même jour.
+Alors $\overline{A_n}$ est l'événement que parmi une classe de $n$ élèves, tous les étudiants soient nés les jours tous différents, 
+c'est-à-dire $\overline{A_n}$ est une élément de $\Omega$ sans répétition des éléments.
+
+Pour les $n$ élèves, le premier peut choisir $365$ dates comme sa naissance, il en rest $364$ dates possibles pour le deuxième élève à choisir 
+sans répétition $\cdots$. On notice que par la principe des tiroirs, la répétition est inévitable pour $n>365$
+
+Finalement,  
+\begin{equation}  \nonumber
+    \mathbb{P}(A_n)=1-\mathbb{P}(\overline{A_n})=\left\{  
+                 \begin{array}{ccc}  
+                    1-\frac{365!}{(365-n)!365^n} & & n \leq 365\\  
+                 0 & & n > 365  
+                 \end{array}  
+    \right.  
+\end{equation}
+\subsubsection{}
+Il faut que $1-\frac{365!}{(365-n)!365^n}\geq 50\%$ avec $n \in \mathbb{N}^*$, ce qui nous donne que $\boxed{n \geq 23}$.
+Le résultat me parait très surprenant 
+\section{familles sommables et probabilités}
+\subsection{}
+On pose $\Omega=\mathbb{N}^2$, on a donc $\forall (n,p) \in \Omega$, 
+$g(n,p)=\alpha \beta (1-\alpha)^n (1-\beta)^p \geq 0$ avec $(\alpha,\beta) \in (0,1)^2$. 
+Et puis, 
+\begin{align*}
+    \sum_{(n,p) \in \Omega}g(n,p)&=\sum_{n=0}^{+\infty}\sum_{p=0}^{+\infty}\alpha \beta (1-\alpha)^n (1-\beta)^p\\
+                                 &=\alpha \beta \sum_{n=0}^{+\infty}(1-\alpha)^n\sum_{p=0}^{+\infty}(1-\beta)^p
+\end{align*}
+Puisque $(\alpha,\beta) \in (0,1)^2$, $\sum_{n=0}^{+\infty}(1-\alpha)^n$ converge, et vaut $\frac{1}{\alpha}$. De même, 
+$\sum_{p=0}^{+\infty}(1-\beta)^p$ converge, et vaut $\frac{1}{\beta}$. 
+
+On a donc $\sum_{(n,p) \in \Omega}g(n,p)=1$, car $g$ est positif, pour tout $(n, p) \in \mathbb{N}$, 
+si on pose $\mathbb{P}({(n, p)}) = g(n, p)$, $\mathbb{P}$ est bien une probabilité sur l’espace probabilisable
+discret $(\mathbb{N}^2,\mathscr{P}(\mathbb{N}^2))$
+\subsection{}
+$(\mathbb{N},\mathscr{P}(\mathbb{N}))$ est un espace probabilisable, et la variable aléatoire $X$ définie par
+\begin{equation}  \nonumber
+    X=\left.  
+                 \begin{array}{ccc}  
+                 \mathbb{N}^2 & \to & \mathbb{N}\\  
+                 (n,p) & \mapsto & n
+                 \end{array}  
+    \right.  
+\end{equation}
+$X$ est une variable aléatoire discrète, car $X(\mathbb{N}^2)=\mathbb{N}$ est dénombrable. Pour tout $k \in\mathbb{N}$, $(X=k)=\{(n,p) \in \mathbb{N}^2, X(n,p)=k\}=\{(k,p) \in \mathbb{N}^2, p \in \mathbb{N}\}$. 
+Et on a des évènement $(X=i)$ et $(X=j)$ sont disjoints lorsque $i \neq j$
+
+Alors
+\begin{align*}
+    \mathbb{P}(X=k)&=\sum_{p \in \mathbb{N}}\alpha \beta (1-\alpha)^k(1-\beta)^p\\
+                   &=\alpha \beta (1-\alpha)^k \sum_{p=0}^{+\infty}(1-\beta)^p\\
+                   &=\alpha(1-\alpha)^k
+\end{align*} 
+
+Comme $\sum_{k \in \mathbb{N}}\mathbb{P}(X=k)=\sum_{k=0}^{+\infty}\alpha(1-\alpha)^k=1$ pour $0<\alpha <1, 0<\beta <1$, 
+
+la loi de $X$ est bien donnée par $\boxed{\mathbb{P}(X=k)=\alpha(1-\alpha)^k, \forall k \in \mathbb{N}}$.
+
+De même, la loi de $Y$ est donnée par $\boxed{\mathbb{P}(Y=m)=\beta (1-\beta)^m, \forall m \in \mathbb{N}}$.
+\subsection{}
+\subsubsection{}
+L'évènement $(X=k, Y=m)=\{(n,p) \in \mathbb{N}^2, X(n,p)=k, Y(n,p)=m\}=\{(k,m)\}$, donc
+\begin{align*}
+    \mathbb{P}(X=k,Y=m)&=\mathbb{P}(\{k,m\})\\
+                       &=\alpha \beta (1-\alpha)^k (1-\beta)^m\\
+                       &=[\alpha  (1-\alpha)^k] [\beta(1-\beta)^m]\\
+                       &=\mathbb{P}(X=k)\mathbb{P}(Y=m)
+\end{align*}
+$X$ et $Y$ sont donc indépendantes. 
+
+$$(X=Y)=\bigcup_{k\in \mathbb{N}}\left((X=k)\cap(Y=k)\right)$$
+
+C'est une union disjointe, on a donc 
+\begin{align*}
+    \mathbb{P}(X=Y)&=\sum_{k \in \mathbb{N}}\mathbb{P}(X=k,Y=k)\\
+                   &=\sum_{k =0}^{+\infty}\alpha  (1-\alpha)^k\beta(1-\beta)^k\\
+                   &=\alpha \beta \sum_{k =0}^{+\infty}[(1-\alpha)(1-\beta)]^k
+\end{align*}
+Or $0<\alpha <1, 0<\beta <1$, on a donc $\boxed{\mathbb{P}(X=Y)=\frac{\alpha \beta}{\alpha+\beta-\alpha \beta}}$
+\subsubsection{}
+Or $X$ et $Y$ sont donc indépendantes, et $0<\alpha <1, 0<\beta <1$, on a
+$$
+(X>Y)=\bigcup_{k\in \mathbb{N}}\left((X=k)\cap\left(\bigcup_{n \in \mathbb{N}, n<k}(Y=n)\right)\right)
+$$
+C'est une union disjointe, on a donc 
+\begin{align*}
+    \mathbb{P}(X>Y)&=\sum_{k \in \mathbb{N}}\sum_{n \in \mathbb{N},n<k}\mathbb{P}(X=k,Y=n)\\
+                   &=\sum_{k =1}^{+\infty}\sum_{n =0}^{k-1}\alpha  (1-\alpha)^k\beta(1-\beta)^n\\
+                   &=\sum_{k =1}^{+\infty}\left(\alpha  (1-\alpha)^k\sum_{n =0}^{k-1}\beta(1-\beta)^n\right)\\
+                   &=\alpha \sum_{k =1}^{+\infty}(1-\alpha)^k\beta \frac{1-(1-\beta)^{k}}{1-(1-\beta)}\\
+                   &=\alpha \sum_{k =1}^{+\infty}(1-\alpha)^k-\alpha \sum_{k =1}^{+\infty}(1-\alpha)^k(1-\beta)^k\\
+                   &=\alpha \frac{1-\alpha}{1-(1-\alpha)}-\alpha \frac{(1-\alpha)(1-\beta)}{1-(1-\alpha)(1-\beta)}\\
+                   &=1-\alpha-\alpha\frac{\alpha\beta-\alpha-\beta+1}{\alpha+\beta-\alpha\beta}
+\end{align*}
+Finalement, on a $\boxed{\mathbb{P}(X<Y)=\frac{\beta(1-\alpha)}{\alpha+\beta-\alpha\beta}}$
+\end{document}

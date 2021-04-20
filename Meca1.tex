@@ -1,0 +1,76 @@
+%%% Ne pas modifier jusqu'à la ligne 25
+\documentclass[a4paper,12pt]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+%%\usepackage{CJK}
+\usepackage{yhmath}
+\usepackage[left=2cm,right=2cm,top=3cm,bottom=2cm, headheight=1.5cm,headsep=1.5cm]{geometry}
+%%\usepackage{CJKutf8}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage{amsmath,amsfonts,amssymb,dsfont}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{enumitem}		%\enumerate-resume
+\usepackage[colorlinks=true,unicode={true},hyperindex=false, linkcolor=blue, urlcolor=blue]{hyperref}
+\newcommand{\myref}[1]{\ref{#1} page \pageref{#1}}
+
+\addto\captionsfrench{\def\tablename{Tableau}}  %légendes des tableaux
+\renewcommand\thesection{\Roman{section}~-~} 
+\renewcommand\thesubsection{\Roman{section}.\Alph{subsection}~-~} 
+\renewcommand\thesubsubsection{\Roman{section}.\Alph{subsection}.\arabic{subsubsection}~-~} 
+
+\newcommand{\conclusion}[1]{\newline \centerline{\fbox{#1}}}
+
+\setcounter{secnumdepth}{3}
+\parindent=0pt
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\lhead{SJTU-ParisTech} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chead{DM1}
+\rhead{Daniel 518261910024}
+
+\begin{document}
+\renewcommand{\labelitemi}{$\blacktriangleright$}
+\renewcommand{\labelitemii}{$\bullet$}
+
+
+\section{Activité 1-3}
+Dans le référentiel $(R)$, le moment cinétique du système $(\Sigma)$ par rapport à $A$ est défini par 
+$$
+\overrightarrow{L}_{A,(R)}(\Sigma)=\int_{(\Sigma)}\overrightarrow{AP} \wedge \vec{v}_{(R)}(P)\,dm_P
+$$
+Si on changement de point de référence $B$ avec $\overrightarrow{AP}=\overrightarrow{AB}+\overrightarrow{BP}$, on obtient 
+\begin{align*}
+\overrightarrow{L}_{A,(R)}(\Sigma)&=\int_{(\Sigma)}(\overrightarrow{AB}+\overrightarrow{BP}) \wedge \vec{v}_{(R)}(P)\,dm_P\\
+&=\int_{(\Sigma)}\overrightarrow{BP} \wedge \vec{v}_{(R)}(P)\,dm_P+\int_{(\Sigma)}\overrightarrow{AB} \wedge \vec{v}_{(R)}(P)\,dm_P\\
+&=\overrightarrow{L}_{B,(R)}(\Sigma)+\overrightarrow{AB}\wedge\int_{(\Sigma)}\vec{v}_{(R)}(P)\,dm_P
+\end{align*}
+Par la définition de quantité de mouvement $\vec{p}_{(R)}(\Sigma)=\int_{(\Sigma)}\vec{v}_{(R)}(P)\,dm_P$, 
+on obtient 
+$$\boxed{\overrightarrow{L}_{A,(R)}(\Sigma)=\overrightarrow{L}_{B,(R)}(\Sigma)+\overrightarrow{AB}\wedge\vec{p}_{(R)}(\Sigma)} $$
+
+\section{Activité 1-4}
+Dans le référentiel $(R)$, si on change deux points $A$ et $A^{'}$ sur l'axe $\Delta(A,\vec{u})$, d'après le résultat précédent, on a 
+$$
+\overrightarrow{L}_{A,(R)}(\Sigma)\cdot \vec{u}=\overrightarrow{L}_{A^{'},(R)}(\Sigma)\cdot \vec{u}+\overrightarrow{AA^{'}}\wedge \vec{p}_{(R)}(\Sigma)\cdot\vec{u}
+$$
+Par les calculs vectoriels $\vec{a}\cdot(\vec{b}\wedge\vec{c})=\vec{c}\cdot(\vec{a}\wedge\vec{b})$, on a alors 
+$$
+\overrightarrow{AA^{'}}\wedge \vec{p}_{(R)}(\Sigma)\cdot\vec{u}=(\vec{u}\wedge\overrightarrow{AA^{'}})\cdot\vec{p}_{(R)}(\Sigma)=0
+$$
+car $\overrightarrow{AA^{'}}$ est parallèle à $\vec{u}$. 
+
+On a donc $\boxed{\overrightarrow{L}_{A,(R)}(\Sigma)\cdot \vec{u}=\overrightarrow{L}_{A^{'},(R)}(\Sigma)\cdot \vec{u}}$. 
+
+On peut donc définir le moment cinétique de $(\Sigma)$ relativement à l'axe $\Delta$ par 
+$$
+\overrightarrow{L}_{\Delta,(R)}(\Sigma)=\overrightarrow{L}_{A,(R)}(\Sigma)\cdot \vec{u}
+$$
+qui est indépendant du point choisi sur l'axe
+
+
+\end{document}

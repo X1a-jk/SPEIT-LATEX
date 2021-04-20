@@ -1,0 +1,171 @@
+%%% Ne pas modifier jusqu'à la ligne 25
+\documentclass[a4paper,12pt]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+%%\usepackage{CJK}
+\usepackage{yhmath}
+\usepackage[left=2cm,right=2cm,top=3cm,bottom=2cm, headheight=1.5cm,headsep=1.5cm]{geometry}
+%%\usepackage{CJKutf8}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage{amsmath,amsfonts,amssymb,dsfont}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{enumitem}		%\enumerate-resume
+\usepackage[colorlinks=true,unicode={true},hyperindex=false, linkcolor=blue, urlcolor=blue]{hyperref}
+\newcommand{\myref}[1]{\ref{#1} page \pageref{#1}}
+
+\addto\captionsfrench{\def\tablename{Tableau}}  %légendes des tableaux
+\renewcommand\thesection{\Roman{section}~-~} 
+\renewcommand\thesubsection{\Roman{section}.\Alph{subsection}~-~} 
+\renewcommand\thesubsubsection{\Roman{section}.\Alph{subsection}.\arabic{subsubsection}~-~} 
+
+\newcommand{\conclusion}[1]{\newline \centerline{\fbox{#1}}}
+
+\setcounter{secnumdepth}{3}
+\parindent=0pt
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\lhead{SJTU-ParisTech} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chead{DM}
+\rhead{Daniel 518261910024}
+
+\begin{document}
+\renewcommand{\labelitemi}{$\blacktriangleright$}
+\renewcommand{\labelitemii}{$\bullet$}
+
+
+\section{Exercice 1}
+\subsection{}
+Comme $f$ est positive, on a $\forall x \in \mathbb{R}_+, f^{"}(x)\geq f(x)\geq 0$, 
+donc $f^{"}$ est positive, \fbox{$f$ est donc convexe}
+
+Car $f$ est continue sur $\mathbb{R}_+$, on a donc la courbe représentative de $f$ est au-dessus ses tangentes. 
+
+Soit $a \in \mathbb{R}_+$, on a donc $\forall x \in \mathbb{R}_+, f(x) \geq f^{'}(a)(x-a)+f(a)$. Si $f^{'}(a) >0$, on a 
+$f(x)\geq f^{'}(x-a)+f(a)\xrightarrow[x \to +\infty]{}  +\infty$, c'est l'absurde($f$ est bornée sur $\mathbb{R}_+$ d'après l'énoncé). Donc $f^{'}(a)\leq 0$ 
+
+On a donc $\forall a \in \mathbb{R}_+, f^{'}(a)\leq 0$, donc $f^{'}$ est négative sur $\mathbb{R}_+$, \fbox{$f$ est donc décroissante}
+
+\subsection{}
+
+$f$ est décroissante est bornée sur $\mathbb{R}_+$, donc $f$ admet une limite, on le note $l$
+
+Car $f^{"}$ est positive sur $\mathbb{R}_+$, donc $f^{'}$ est croissante sur $\mathbb{R}_+$. $f^{'}$ admet aussi une limite car elle est majorée par $0$, on le note $l^{'}$
+
+Soit $a \in \mathbb{R}_+$, soit $x\in \mathbb{R}_+$ tel que $x>a$, d'après TAF, on a il existe $\xi \in ]a,x[$, tel que $f^{'}(\xi)=\frac{f(x)-f(a)}{x-a}$, 
+on a donc $l^{'}=f^{'}(\xi)\xrightarrow[x \to +\infty]{}(l-f(a))\times 0=0$. Alors $\boxed{\lim_{x \to +\infty}f^{'}(x)=l^{'}=0}$,  
+
+On a aussi $\forall x\in \mathbb{R}_+,f^{"}(x)\geq f(x)\geq l$ car f est décroissante, donc de même méthode,  
+soit $b \in \mathbb{R}_+$, soit $x\in \mathbb{R}_+$ tel que $x>b$, d'après TAF, on a il existe $\lambda \in ]b,x[$, tel que $l\leq f^{"}(\lambda)=\frac{f^{'}(x)-f^{'}(b)}{x-b}$, 
+donc $l \leq \frac{l^{'}-f^{'}(b)}{x-b} \xrightarrow[x \to +\infty]{}0$. Car $f$ est positive, donc $l \geq 0$, donc $\boxed{\lim_{x \to +\infty}f(x)=l=0}$
+\subsection{}
+On a $\forall x\in \mathbb{R}_+$, $h^{'}(x)=[f^{"}(x)-f(x)]e^{-x}\leq 0$, \fbox{$h$ est donc croissante}
+
+De puis, on a $h(x)=\frac{f(x)+f^{'}(x)}{e^x}\xrightarrow[x \to +\infty]{}0$, car $h$ est croissante, on a $\boxed{\forall x \in \mathbb{R}_+, h(x) \leq 0}$. 
+
+On a donc $\forall x \in \mathbb{R}_+$, $f(x)+f^{'}(x) \leq 0$ car $x \mapsto e^{-x}$ est positive. Et on a $\forall x \in \mathbb{R}_+, g^{'}(x)=[f(x)+f^{'}(x)]e^x\leq 0$, 
+\fbox{g est donc décroissante}
+\subsection{}
+Car g est décroissante, on a $\forall x \in \mathbb{R}_+$, $f(0)e^0 \geq f(x)e^x$, 
+donc  $\boxed{\forall x \in \mathbb{R}_+, f(x) \leq f(0)e^{-x}}$
+
+
+\section{Exercice 2}
+\subsection{}
+Soit $x \in \mathbb{R}$, on note $u_n=\frac{|x-a_n|}{3^n}$. C'est une série à termes positifs. 
+
+On a $u_n \sim \frac{1}{3^n}$ car $(a_n)_{n \in \mathbb{N}}$ est bornée, donc $\sum u_n$ converge car $\sum \frac{1}{3^n}$ est une série géométrique 
+converge. Donc \fbox{f est bien définie sur $\mathbb{R}$} 
+Soit $(x,y) \in \mathbb{R}^2$, $t \in [0,1]$, on a 
+\begin{align*}
+    f(tx+(1-t)y)&=\sum_{n=0}^{+\infty}\frac{|tx+(1-t)y-a_n|}{3^n}\\
+    &\leq\sum_{n=0}^{+\infty}\frac{|tx-ta_n|}{3^n}+\sum_{n=0}^{+\infty}\frac{|(1-t)y-(1-t)a_n|}{3^n}\\
+    &=t\sum_{n=0}^{+\infty}\frac{|x-a_n|}{3^n}+(1-t)\sum_{n=0}^{+\infty}\frac{|y-a_n|}{3^n}\\
+    &=tf(x)+(1-t)f(y)
+\end{align*}
+\fbox{f est donc convexe}
+\subsection{}
+    soit $h \in \mathbb{R}$, on a 
+    \begin{align*}
+    \left|f(a_0+h)-f(a_0)-|h|\right|&=\left|\sum_{n=0}^{+\infty}\frac{|a_0+h-a_n|}{3^{n}}-\sum_{n=0}^{+\infty}\frac{|a_0-a_n|}{3^{n}}-|h|\right|\\
+    &=\left|\sum_{n=1}^{+\infty}\frac{|a_0+h-a_n|}{3^{n}}+|h|-\sum_{n=1}^{+\infty}\frac{|a_0-a_n|}{3^{n}}-|h|\right|\\
+    &\leq \left|\sum_{n=1}^{+\infty}\frac{|a_0-a_n|}{3^{n}}+\sum_{n=1}^{+\infty}\frac{|h|}{3^{n}}-\sum_{n=1}^{+\infty}\frac{|a_0-a_n|}{3^{n}}\right|\\
+    &=\left|\sum_{n=1}^{+\infty}\frac{|h|}{3^{n}}\right|\\
+    &=|h|\left(\sum_{n=1}^{+\infty}\frac{1}{3^{n}}\right)\\
+    &\leq \frac{|h|}{2}
+    \end{align*}
+    Car $\sum_{n=1}^{+\infty}\frac{1}{3^{n}}$ converge(série géométrique convergente), et vaut $\frac{1/3}{1-1/3}=\frac{1}{2}$
+
+    
+Donc, on a $\boxed{\forall h \in \mathbb{R}, \left|f(a_0+h)-f(a_0)-|h|\right|\leq \frac{|h|}{2}}$
+
+Car f est convexe, elle admet les dérivées à droite et à gauche en tous les $a_i, i \in \mathbb{N}$
+
+On le montre par l'absurde: supposons que f est dérivable en tous les points de la suite $(a_n)_{n\in \mathbb{N}}$.
+
+Soit $i \in \mathbb{N}$, on note $f^{'}_d(a_i)$ la dérivée de $a_i$ à droite, $f^{'}_g(a_i)$ la dérivée de $a_i$ à gauche, $f^{'}_g(a_i)\leq f^{'}_d(a_i)$ car f est convexe
+
+On suppose que 
+$f^{'}_d(a_i)=f^{'}_g(a_i)$. 
+
+On a $\left|f(a_0+h)-f(a_0)-|h|\right| \leq \frac{|h|}{2}$, soit $h \neq 0$
+\begin{itemize}
+    \item $h > 0$, on a donc 
+    $$
+    \frac{-h}{2} \leq f(a_0+h)-f(a_0)-h\leq \frac{h}{2}
+    $$
+    donc 
+    $$
+    \frac{1}{2} \leq \frac{f(a_0+h)-f(a_0)}{h}\leq \frac{3}{2}
+    $$
+    donc 
+    $$
+    \frac{1}{2} \leq f^{'}_d(a_0)=\lim_{h\to 0^+}\frac{f(a_0+h)-f(a_0)}{h}\leq \frac{3}{2}
+    $$
+    \item $h < 0$, on a donc 
+    $$
+    \frac{h}{2} \leq f(a_0+h)-f(a_0)+h\leq -\frac{h}{2}
+    $$
+    donc 
+    $$
+    -\frac{3}{2} \leq \frac{f(a_0+h)-f(a_0)}{h}\leq -\frac{1}{2}
+    $$
+    donc 
+    $$
+    -\frac{3}{2} \leq f^{'}_g(a_0)=\lim_{h\to 0^-}\frac{f(a_0+h)-f(a_0)}{h}\leq -\frac{1}{2}
+    $$
+\end{itemize}
+on a 
+$$
+  f^{'}_d(a_0) \geq \frac{1}{2} > -\frac{1}{2}\geq f^{'}_g(a_0)
+$$
+Donc il est impossible que $f^{'}_d(a_0)=f^{'}_g(a_0)$, c'est l'absurde. 
+
+Finalement, \fbox{f n'est pas dérivable en $a_0$}
+\subsection{}
+Initialisation: f n'est pas dérivable en $a_0$
+
+Hérédité: on suppose que $(H_k):$ f n'est pas dérivable en tous les $a_i$, $i \in [\![0,\cdots,k]\!]$ soit vrai.
+
+Pour le rang $k+1$, on a 
+$$f(x)=\sum_{n=0}^{+\infty}\frac{|x-a_n|}{3^n}=\sum_{n=0}^{k}\frac{|x-a_n|}{3^n}+\sum_{n=k+1}^{+\infty}\frac{|x-a_n|}{3^n}$$
+Si on note $\forall i \in \mathbb{N}, b_i=a_{i+k+1}$, donc la suite $(b_n)_{n \in \mathbb{N}}$ est aussi une suite de réels bornée. 
+
+On a donc 
+$$
+\sum_{n=k+1}^{+\infty}\frac{|x-a_n|}{3^n}=\frac{1}{3^{k+1}}\sum_{n=0}^{+\infty}\frac{|x-b_n|}{3^n}
+$$
+qui n'est pas dérivable en $b_0=a_{k+1}$
+
+Et on a $\sum_{n=0}^{k}\frac{|x-a_n|}{3^n}$ est dérivable en $a_{k+1}$ lorsque $a_{k+1} \neq a_i, \forall i \in [\![0,\cdots,k]\!]$
+(lorsque il existes $ i \in [\![0,\cdots,k]\!]$ tel que $a_i=a_{k+1}$, f est indérivable en cet $a_i=a_{k+1}$)
+
+Alors, f n'est pas dérivable en $a_{k+1}$. Par notre hypothèse que f n'est pas dérivable en tous les $a_i$, $i \in [\![0,\cdots,k]\!]$, 
+on a donc f n'est pas dérivable en tous les $a_i$, $i \in [\![0,\cdots,k+1]\!]$, $(H_{k+1})$ est encore vraie.
+
+Finalement, on a \fbox{f n'est pas dérivable en tous les $(a_n)_{n \in \mathbb{N}}$}
+\end{document}

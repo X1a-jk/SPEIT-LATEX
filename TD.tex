@@ -1,0 +1,83 @@
+%%% Ne pas modifier jusqu'à la ligne 25
+\documentclass[a4paper,12pt]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+%%\usepackage{CJK}
+\usepackage{yhmath}
+\usepackage[left=2cm,right=2cm,top=3cm,bottom=2cm, headheight=1.5cm,headsep=1.5cm]{geometry}
+\usepackage{CJKutf8}
+\usepackage{amsmath,amsfonts,amssymb,dsfont}
+\usepackage{graphicx}
+\usepackage{mathrsfs}
+\usepackage{enumitem}		%\enumerate-resume
+\usepackage[colorlinks=true,unicode={true},hyperindex=false, linkcolor=blue, urlcolor=blue]{hyperref}
+\newcommand{\myref}[1]{\ref{#1} page \pageref{#1}}
+
+\addto\captionsfrench{\def\tablename{Tableau}}  %légendes des tableaux
+\renewcommand\thesection{\Roman{section}~-~} 
+\renewcommand\thesubsection{\Roman{section}.\Alph{subsection}~-~} 
+\renewcommand\thesubsubsection{\Roman{section}.\Alph{subsection}.\arabic{subsubsection}~-~} 
+
+\newcommand{\conclusion}[1]{\newline \centerline{\fbox{#1}}}
+
+\setcounter{secnumdepth}{3}
+\parindent=0pt
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\lhead{SJTU-ParisTech} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chead{TD 2-1}
+\rhead{Daniel 518261910024}
+
+\begin{document}
+\begin{CJK}{UTF8}{gbsn}
+\renewcommand{\labelitemi}{$\blacktriangleright$}
+\renewcommand{\labelitemii}{$\bullet$}
+
+
+\section{Influence de la taille finie d'un détecteur}
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.7]{TD2-1}
+\end{center}
+\caption{Figure de ce détecteur}
+\end{figure}
+
+\subsection{}
+On a la puissance
+\begin{align*}
+P&=\iint_{surface} \mathcal{E}(M)\,dS \\
+ &=\int_{y_c-\frac{l}{2}}^{y_c+\frac{l}{2}}\int_{x_c-\frac{L}{2}}^{x_c+\frac{L}{2}}
+ \mathcal{E}_0(1+\cos(Kx))\,dx\,dy\\
+ &=\mathcal{E}_0\int_{y_c-\frac{l}{2}}^{y_c+\frac{l}{2}}\,dy\int_{x_c-\frac{L}{2}}^{x_c+\frac{L}{2}}
+ 1+\cos(Kx)\,dx\\
+ &=\mathcal{E}_0l\left[x+\frac{1}{K}\sin(Kx)\right]_{x=x_c-\frac{L}{2}}^{x=x_c+\frac{L}{2}}\\
+ &=\mathcal{E}_0l\left(L+\frac{1}{K}(\sin(K(x_c+\frac{L}{2}))-\sin(K(x_c-\frac{L}{2})))\right)
+\end{align*}
+Car on a $\sin(\alpha)-\sin(\beta)=2\cos(\frac{\alpha+\beta}{2})\sin(\frac{\alpha-\beta}{2})$, donc
+\begin{align*}
+P&=\mathcal{E}_0l\left(L+\frac{1}{K}(2\cos(Kx_c)\sin(\frac{LK}{2}))\right)\\
+ &=\mathcal{E}_0Ll\left(1+2\frac{\sin(\frac{LK}{2})}{LK}\cos(Kx_c)\right)\\
+\end{align*}
+On a donc: $\boxed{f(L)=2\frac{\sin(\frac{LK}{2})}{LK}}$
+
+\subsection{}
+Quand $L\ll\frac{1}{K}$, on a $LK\ll1$, donc $f(L)=\frac{\sin(\frac{LK}{2})}{\frac{LK}{2}}\sim1$, 
+donc $P=\mathcal{E}_0Ll\left(1+f(L)\cos(Kx_c)\right) \sim \mathcal{E}_0Ll\left(1+\cos(Kx_c)\right) = 
+\boxed{Ll\mathcal{E}(x_c)}$, $P$ est donc proportionnelle à l'éclairement $\mathcal{E}(x_c)$. On a aussi
+$L\ll\lambda=\frac{2\pi}{K}$, la longueur caractéristique du détecteur est beaucoup plus petite que la longueur
+d'onde, tous les points sur le détecteur est relativement proche du point $x_c$, donc l'éclairment reçu 
+par le détecteur est proportionnelle à l'éclairement du point $x_c$. 
+
+\subsection{}
+Quand $L\gg\frac{1}{K}$, on a $LK\gg1$, donc $f(L)\sim0$, donc $P=\mathcal{E}_0Ll\left(1+f(L)\cos(Kx_c)\right)
+\sim \boxed{\mathcal{E}_0Ll}$, $P$ est donc indépendante de $x_c$. On a aussi
+$L\gg\lambda=\frac{2\pi}{K}$, la longueur caractéristique du détecteur est beaucoup plus grande que la longueur
+d'onde. L'éclairement reçu est indépendant du chaque point sur le détecteur. Il peut bien détecter.
+
+
+\end{CJK}
+\end{document}

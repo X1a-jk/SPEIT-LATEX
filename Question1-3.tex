@@ -1,0 +1,70 @@
+%%% Ne pas modifier jusqu'à la ligne 25
+\documentclass[a4paper,12pt]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+%%\usepackage{CJK}
+\usepackage{yhmath}
+\usepackage[left=2cm,right=2cm,top=3cm,bottom=2cm, headheight=1.5cm,headsep=1.5cm]{geometry}
+\usepackage{CJKutf8}
+\usepackage{amsmath,amsfonts,amssymb,dsfont}
+\usepackage{graphicx}
+\usepackage{enumitem}		%\enumerate-resume
+\usepackage[colorlinks=true,unicode={true},hyperindex=false, linkcolor=blue, urlcolor=blue]{hyperref}
+\newcommand{\myref}[1]{\ref{#1} page \pageref{#1}}
+
+\addto\captionsfrench{\def\tablename{Tableau}}  %légendes des tableaux
+\renewcommand\thesection{\Roman{section}~-~} 
+\renewcommand\thesubsection{\Roman{section}.\Alph{subsection}~-~} 
+\renewcommand\thesubsubsection{\Roman{section}.\Alph{subsection}.\arabic{subsubsection}~-~} 
+
+\newcommand{\conclusion}[1]{\newline \centerline{\fbox{#1}}}
+
+\setcounter{secnumdepth}{3}
+\parindent=0pt
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\lhead{SJTU-ParisTech} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chead{Question 1-3}
+\rhead{夏俊恺 Daniel 518261910024}
+
+\begin{document}
+\begin{CJK}{UTF8}{gbsn}
+\renewcommand{\labelitemi}{$\blacktriangleright$}
+\renewcommand{\labelitemii}{$\bullet$}
+
+
+\section{Question 1-3}
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.7]{1_3}
+\end{center}
+\caption{Profil d'une lentille}
+\end{figure}
+
+
+
+Les point $A$ et $A'$ sont conjugés par rapport à cette lentille, on sait que
+le chemin optique entre deux point conjugés sont indépendant du rayon considéré.
+On a: $(AA')_1=(AA')_2$, donc on peut choisir le rayon 2 qui passe par le centre:
+\begin{align*}
+    (AA')&=\int_{\wideparen{AA'}}n(p)dl_p\\
+    &=\int_{\wideparen{AA_1}}n(p)dl_p+\int_{\wideparen{A_1A_2}}n(p)dl_p+\int_{\wideparen{A_2A'}}n(p)dl_p\\
+\end{align*}
+
+Dans $AA_1, A_1A_2, A_2A'$, les milieux sont respectivement homogènes, on a donc
+
+\begin{align*}
+    (AA')&=\int_{\wideparen{AA_1}}n(p)dl_p+\int_{\wideparen{A_1A_2}}n(p)dl_p+\int_{\wideparen{A_2A'}}n(p)dl_p\\
+    &=\int_{\wideparen{AA_1}}dl_p+\int_{\wideparen{A_1A_2}}ndl_p+\int_{\wideparen{A_2A'}}dl_p\\
+    &=AA_1+n*A_1A_2+A_2A'\\
+    &=AA'-e+n*e\\
+\end{align*}
+
+Finalement, on a $\boxed{(AA')=AA'+(n-1)e}$
+
+\end{CJK}
+\end{document}
