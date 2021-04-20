@@ -1,0 +1,67 @@
+%%% Ne pas modifier jusqu'à la ligne 25
+\documentclass[a4paper,12pt]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+%%\usepackage{CJK}
+\usepackage{yhmath}
+\usepackage[left=2cm,right=2cm,top=3cm,bottom=2cm, headheight=1.5cm,headsep=1.5cm]{geometry}
+%%\usepackage{CJKutf8}
+\usepackage{amsfonts}
+\usepackage{amsmath,amsfonts,amssymb,dsfont}
+\usepackage{graphicx}
+\usepackage{enumitem}		%\enumerate-resume
+\usepackage[colorlinks=true,unicode={true},hyperindex=false, linkcolor=blue, urlcolor=blue]{hyperref}
+\newcommand{\myref}[1]{\ref{#1} page \pageref{#1}}
+
+\addto\captionsfrench{\def\tablename{Tableau}}  %légendes des tableaux
+\renewcommand\thesection{\Roman{section}~-~} 
+\renewcommand\thesubsection{\Roman{section}.\Alph{subsection}~-~} 
+\renewcommand\thesubsubsection{\Roman{section}.\Alph{subsection}.\arabic{subsubsection}~-~} 
+
+\newcommand{\conclusion}[1]{\newline \centerline{\fbox{#1}}}
+
+\setcounter{secnumdepth}{3}
+\parindent=0pt
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\lhead{SJTU-ParisTech} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chead{TR1}
+\rhead{Daniel 518261910024}
+
+\begin{document}
+\renewcommand{\labelitemi}{$\blacktriangleright$}
+\renewcommand{\labelitemii}{$\bullet$}
+
+\section{les conditions pour obtenir des interférences lumineuses}
+Au point M étudié, soit $s_1(M,t)=a_1(M)\cos(\omega t-\phi_1(M))$, $s_2(M,t)=a_2(M)\cos(\omega t-\phi_2(M))$ les deux signaux.
+On sait que le terme d'interférences est 
+\begin{equation}
+2\sqrt{\mathcal{E}_1(M)\mathcal{E}_2(M)}(<\cos((\omega_1+\omega_2)t-(\phi_1+\phi_2))>+<\cos((\omega_1-\omega_2)t-(\phi_1-\phi_2))>) \label{e1}
+\end{equation}
+\subsection{pulsation temporelle}
+Il faux que les deux signaux soient de même pulsation: $\boxed{\omega_1=\omega_2}$, sinon, equation(1) vaut $0$: pas de interférences.  
+(car la valeur moyenne d'une équation cosinusoïdal de pulsation non nulle dans une période vaut $0$). On le note $S$.
+Ainsi, équation(1) devient 
+\begin{equation}
+    2\sqrt{\mathcal{E}_1(M)\mathcal{E}_2(M)}<cos(\Delta\phi_{2/1}(M))>
+\end{equation}
+où $\Delta\phi_{2/1}(M)=\phi_2(M)-\phi_1(M)$, le déphasage entre les deux signaux. 
+\subsection{source}
+Il faut que les deux signaux \fbox{issus de même source}. Sinon, selon le modèle des trains d'ondes, équation(2) vaut 0 (car 
+$\Delta\phi_{2/1}(M)$ change aléatoirement, sa valeur moyenne vaut 0)
+\subsection{longueur de cohérence}
+selon le modèle des trains d'ondes, les deux signaux doit être associés à le même train d'onde. Il faut que 
+$\frac{|(SM)_2-(SM)_1|}{c}<\tau_c$, avec $\tau_c$ le temps de cohérence. On a donc $\boxed{|\delta_{2/1}(M)|<l_c}$, avec
+ $l_c=c*\tau_c$ la longueur de cohérence, $\delta_{2/1}(M)=(SM)_2-(SM)_1$ la différence de marche. 
+\subsection{éclairement comparable}
+En notant $C=2\frac{\sqrt{r}}{r+1}$, où $r=\frac{\mathcal{E}_1(M)}{\mathcal{E}_2(M)}$, l'éclairement totale 
+\begin{align*}
+    \mathcal{E}(M)&=\mathcal{E}_1(M)+\mathcal{E}_2(M)+2\sqrt{\mathcal{E}_1(M)\mathcal{E}_2(M)}<cos(\Delta\phi_{2/1}(M))>\\
+                  &=\mathcal{E}_1(M)+\mathcal{E}_2(M))(1+C<cos(\Delta\phi_{2/1}(M))>
+\end{align*}
+lorsque $\mathcal{E}_1(M) \gg \mathcal{E}_2(M)$ ou $ \mathcal{E}_1(M)\ll \mathcal{E}_2(M)$, $C\rightarrow 0$, 
+on a $\mathcal{E}(M)\sim \mathcal{E}_1(M)+\mathcal{E}_2(M)$, les interférences sont invisibles. Donc les éclairements \fbox{doivent être comparables}. 
+\end{document}
