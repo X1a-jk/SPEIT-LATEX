@@ -1,0 +1,62 @@
+%%% Ne pas modifier jusqu'à la ligne 25
+\documentclass[a4paper,12pt]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+%%\usepackage{CJK}
+\usepackage{yhmath}
+\usepackage[left=2cm,right=2cm,top=3cm,bottom=2cm, headheight=1.5cm,headsep=1.5cm]{geometry}
+%%\usepackage{CJKutf8}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage{amsmath,amsfonts,amssymb,dsfont}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{enumitem}		%\enumerate-resume
+\usepackage[colorlinks=true,unicode={true},hyperindex=false, linkcolor=blue, urlcolor=blue]{hyperref}
+\newcommand{\myref}[1]{\ref{#1} page \pageref{#1}}
+
+\addto\captionsfrench{\def\tablename{Tableau}}  %légendes des tableaux
+\renewcommand\thesection{\Roman{section}~-~} 
+\renewcommand\thesubsection{\Roman{section}.\Alph{subsection}~-~} 
+\renewcommand\thesubsubsection{\Roman{section}.\Alph{subsection}.\arabic{subsubsection}~-~} 
+
+\newcommand{\conclusion}[1]{\newline \centerline{\fbox{#1}}}
+
+\setcounter{secnumdepth}{3}
+\parindent=0pt
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\lhead{SJTU-ParisTech} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chead{DM}
+\rhead{Daniel 518261910024}
+\begin{document}
+
+\renewcommand{\labelitemi}{$\blacktriangleright$}
+\renewcommand{\labelitemii}{$\bullet$}
+
+
+\section{}
+Soit $\alpha \in \mathbb{R}^*$, pour tout $x\in ]-1,1[$, on a 
+$$
+(1+x)^\alpha=1+\sum_{n=1}^{+\infty}\frac{\prod_{k=0}^{n-1}(\alpha-k)}{n!}x^n
+$$
+avec le rayon de convergence $R=1$
+On a donc $\forall x \in ]-1,1[ $, 
+$$
+(1+x)^{\frac{1}{2}}=1+\sum_{n=1}^{+\infty}\frac{\prod_{k=0}^{n-1}(1-2k)}{2^n n!}x^n
+$$
+il faut $|x|<\frac{1}{4}$ pour que cette série entière soit convergente si on remplace $x$ par $-4x$, 
+donc $\forall x \in ]-\frac{1}{4},\frac{1}{4}[$, on a 
+\begin{align*}
+(1-4x)^{\frac{1}{2}}&=1+\sum_{n=1}^{+\infty}\frac{\prod_{k=0}^{n-1}(1-2k)}{2^n n!}(-4x)^n\\
+&=1+\sum_{n=1}^{+\infty}\frac{\prod_{k=0}^{n-1}(2k-1)}{2^n n!}(4x)^n\\
+&=1-\sum_{n=1}^{+\infty}\frac{(2n-3)!}{(n-2)!2^{2n-1}n!}(4x)^n\\
+&=1-\sum_{n=1}^{+\infty}\frac{(2n-1)!}{(2n-1)(n-1)!2^{2n-1}n!}(4x)^n\\
+&=1-\sum_{n=1}^{+\infty}\frac{2}{2n-1}\binom{2n-1}{n}x^n 
+\end{align*}
+
+
+ \end{document}

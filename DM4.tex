@@ -1,0 +1,123 @@
+%%% Ne pas modifier jusqu'à la ligne 25
+\documentclass[a4paper,12pt]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+%%\usepackage{CJK}
+\usepackage{yhmath}
+\usepackage[left=2cm,right=2cm,top=3cm,bottom=2cm, headheight=1.5cm,headsep=1.5cm]{geometry}
+%%\usepackage{CJKutf8}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage{amsmath,amsfonts,amssymb,dsfont}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{enumitem}		%\enumerate-resume
+\usepackage[colorlinks=true,unicode={true},hyperindex=false, linkcolor=blue, urlcolor=blue]{hyperref}
+\newcommand{\myref}[1]{\ref{#1} page \pageref{#1}}
+
+\addto\captionsfrench{\def\tablename{Tableau}}  %légendes des tableaux
+\renewcommand\thesection{\Roman{section}~-~} 
+\renewcommand\thesubsection{\Roman{section}.\Alph{subsection}~-~} 
+\renewcommand\thesubsubsection{\Roman{section}.\Alph{subsection}.\arabic{subsubsection}~-~} 
+
+\newcommand{\conclusion}[1]{\newline \centerline{\fbox{#1}}}
+
+\setcounter{secnumdepth}{3}
+\parindent=0pt
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\lhead{SJTU-ParisTech} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chead{DM4}
+\rhead{Daniel 518261910024}
+
+\begin{document}
+\renewcommand{\labelitemi}{$\blacktriangleright$}
+\renewcommand{\labelitemii}{$\bullet$}
+
+
+\section{Enthalpie libre standard de la synthèse de l’eau}
+\subsection{}
+à $T_1=298K$, on a $\Delta_rS^\circ(T_1)=\sum_i\nu_iS^\circ_{m,i}(T_1)=S^\circ_{m,H_2O}(T_1)-\frac{1}{2}S^\circ_{m,O_2}(T_1)-S^\circ_{m,H_2}(T_1)$
+
+\hspace*{\fill} 
+
+A.N. $\Delta_rS^\circ(T_1)=188.7-\frac{1}{2}*205.0-130.6=-44.40 J\cdot K^{-1}\cdot mol^{-1}$
+
+\hspace*{\fill} 
+
+Alors on a $\boxed{\Delta_rG^\circ(T_1)=\Delta_rH^\circ(T_1)-T_1\Delta_rS^\circ(T_1)}$
+
+\hspace*{\fill} 
+
+A.N. $\boxed{\Delta_rG^\circ(T_1)=-241.8*10^3-298*(-44.40)=-2.29*10^5\,J\cdot mol^{-1}}$
+    
+                       
+\subsection{}
+
+Les capacités thermiques molaires standard sont supposées indépendantes de T, 
+on a donc $\Delta_rC^\circ_{p}=C^\circ_{p,m,H_2O}-\frac{1}{2}C^\circ_{p,m,O_2}-C^\circ_{p,m,H_2}$
+
+\hspace*{\fill} 
+
+A.N. $\Delta_rC^\circ_{p}=33.6-\frac{1}{2}*29.4-28.8=-9.90\, J\cdot K^{-1} \cdot mol^{-1}$
+\subsubsection{}
+à $T_2=1000K$, par les apprximations d'Ellinghams, on a 
+$$
+\Delta_rH^\circ(T_2)=\Delta_rH^\circ(T_1)+\int^{T_2}_{T_1}\Delta_rC^\circ_p\,dT
+$$
+$$
+\Delta_rS^\circ(T_2)=\Delta_rS^\circ(T_1)+\int^{T_2}_{T_1}\frac{\Delta_rC^\circ_p}{T}\,dT
+$$
+Les capacités thermiques molaires standard sont supposées indépendantes de T, on a donc 
+$$
+\Delta_rH^\circ(T_2)=\Delta_rH^\circ(T_1)+({T_2}-{T_1})\Delta_rC^\circ_p
+$$
+$$
+\Delta_rS^\circ(T_2)=\Delta_rS^\circ(T_1)+\ln\frac{T_2}{T_1}\Delta_rC^\circ_p
+$$
+A.N. 
+$$\Delta_rH^\circ(T_2)=-241.8*10^3+(1000-298)*(-9.90)=-2.49*10^5\,J\cdot mol^{-1}$$
+$$\Delta_rS^\circ(T_2)=-44.40+\ln\frac{1000}{298}*(-9.90)=-56.4\,J\cdot K^{-1}\cdot mol^{-1}$$
+On a donc $\boxed{\Delta_rG^\circ(T_2)=\Delta_rH^\circ(T_2)-T_2\Delta_rS^\circ(T_2)}$
+
+\hspace*{\fill} 
+
+A.N. $\boxed{\Delta_rG^\circ(T_2)=-2.49*10^5-1000*(-56.4)=-1.93*10^5 \,J\cdot mol^{-1}}$
+\subsubsection{}
+On a aussi 
+$$
+\Delta_rG^\circ(T_2)=\Delta_rG^\circ(T_1)-\int^{T_2}_{T_1}\Delta_rS^\circ(T)\,dT
+$$
+où
+$$
+\Delta_rS^\circ(T)=\Delta_rS^\circ(T_1)-\ln\frac{T}{T_1}\Delta_rC^\circ_p
+$$
+donc
+$$
+\Delta_rG^\circ(T_2)=\Delta_rG^\circ(T_1)-({T_2}-{T_1})\Delta_rS^\circ(T_1)-\Delta_rC^\circ_p\left[T \ln T-T-T\ln T_1\right]^{T_2}_{T_1}
+$$
+A.N. $\boxed{\Delta_rG^\circ(T_2)=-1.93*10^5\,J\cdot mol^{-1}}$
+
+\subsubsection{}
+On a aussi
+$$
+\frac{\Delta_rG^\circ(T_2)}{T_2}=\frac{\Delta_rG^\circ(T_1)}{T_1}-\int^{T_2}_{T_1}\frac{\Delta_rH^\circ(T)}{T^2}\,dT
+$$
+avec
+$$
+\Delta_rH^\circ(T)=\Delta_rH^\circ(T_1)+(T-T_1)\Delta_rC_p^\circ
+$$
+On a donc 
+$$
+\Delta_rG^\circ(T_2)=T_2*\left(\frac{\Delta_rG^\circ(T_1)}{T_1}-\left[\frac{-\Delta_rH^\circ(T_1)}{T}\right]^{T_2}_{T_1}-\Delta_rC_p^\circ
+\left[\ln T\right]^{T_2}_{T_1}+T_1\Delta_rC_p^\circ\left[\frac{-1}{T}\right]^{T_2}_{T_1}\right)
+$$
+A.N. $\boxed{\Delta_rG^\circ(T_2)=-1.93*10^5\,J\cdot mol^{-1}}$
+
+\hspace*{\fill} 
+
+Par les trois méthodes, on a toujours le meme resultat.
+\end{document}

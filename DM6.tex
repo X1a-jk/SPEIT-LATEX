@@ -1,0 +1,136 @@
+%%% Ne pas modifier jusqu'à la ligne 25
+\documentclass[a4paper,12pt]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+%%\usepackage{CJK}
+\usepackage{yhmath}
+\usepackage[left=2cm,right=2cm,top=3cm,bottom=2cm, headheight=1.5cm,headsep=1.5cm]{geometry}
+%%\usepackage{CJKutf8}
+\usepackage{amsfonts}
+\usepackage{amsmath,amsfonts,amssymb,dsfont}
+\usepackage{graphicx}
+\usepackage{enumitem}		%\enumerate-resume
+\usepackage[colorlinks=true,unicode={true},hyperindex=false, linkcolor=blue, urlcolor=blue]{hyperref}
+\newcommand{\myref}[1]{\ref{#1} page \pageref{#1}}
+
+\addto\captionsfrench{\def\tablename{Tableau}}  %légendes des tableaux
+\renewcommand\thesection{\Roman{section}~-~} 
+\renewcommand\thesubsection{\Roman{section}.\Alph{subsection}~-~} 
+\renewcommand\thesubsubsection{\Roman{section}.\Alph{subsection}.\arabic{subsubsection}~-~} 
+
+\newcommand{\conclusion}[1]{\newline \centerline{\fbox{#1}}}
+
+\setcounter{secnumdepth}{3}
+\parindent=0pt
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\lhead{SJTU-ParisTech} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chead{DM6}
+\rhead{Daniel 518261910024}
+
+\begin{document}
+\renewcommand{\labelitemi}{$\blacktriangleright$}
+\renewcommand{\labelitemii}{$\bullet$}
+
+
+\section{Étude de l’équilibre}
+\subsection{}
+
+\begin{table}[h]
+\begin{center}
+    \begin{tabular}{l|ccccc}
+    \hline
+                      & $C_2H_4{(g)}$      & + & $H_2O_{(g)}$       & = & $C_2H_5OH_{(g)}$  \\ \hline
+        $n_{initial}$ & $n_{1,i}=200$       &   & $n_{2,i}=200$      &   & $n_{3,i}=0$ \\ 
+        $n_{final}$      & $n_{1,f}=200-\xi_{eq}$  &   & $n_{2,f}=200-\xi_{eq}$  &   & $n_{3,f}=\xi_{eq}$ \\ 
+    \end{tabular}
+\end{center}
+\end{table}
+à $T_1=298\,K$
+\begin{itemize}
+    \item $\Delta_rH^\circ(T_1)=\Delta_fH_{C_2H_5OH}^\circ(T_1)-\Delta_fH_{C_2H_4}^\circ(T_1)-\Delta_fH_{H_2O}^\circ(T_1)$. 
+    
+    \hspace*{\fill} 
+
+    A.N. $\boxed{\Delta_rH^\circ(T_1)=-235.1-52.3+241.8=-45.6\,kJ\cdot mol^{-1}}$
+
+    \hspace*{\fill} 
+
+    \item $\Delta_rS^\circ(T_1)=S_{m,C_2H_5OH}^\circ(T_1)-S_{m,C_2H_4}^\circ(T_1)-S_{m,H_2O}^\circ(T_1)$. 
+  
+    \hspace*{\fill} 
+  
+    A.N. $\boxed{\Delta_rS^\circ(T_1)=282.7-188.7-219.5=-125.5\,J\cdot K^{-1}\cdot mol^{-1}}$
+
+    \hspace*{\fill} 
+
+    \item $\Delta_rG^\circ(T_1)=\Delta_rH^\circ(T_1)-T_1\Delta_rS^\circ(T_1)$
+    
+    \hspace*{\fill} 
+
+    A.N. $\boxed{\Delta_rG^\circ(T_1)=-45.6*10^3-298*(-125.5)=-8.20\,kJ\cdot mol^{-1}}$
+\end{itemize}
+\subsection{}
+\begin{itemize}
+    \item $\sum_{i,gaz}\nu_i=-1<0$, donc selon la loi de modération de Le Chatelier, cet équilibre évolue dans le sans direct, qui diminue la quantité totale du gaz. 
+    \item Comme $\Delta_rH^\circ(T_1)<0$, c'est une réaction exothermique. Selon la loi de modération de Van't Hoff, une élévation de température provoque donc une évolution dans le sens indirect.
+\end{itemize}
+Donc pour la synthèse industrielle, on va introduire une pression élevé, mais un compromis pour la température 
+entre la vitesse de réaction et de l’équilibre est nécessaire. On peut donc choissir une température de $300^\circ C$, qui n'est pas trop haute ni trop basse pour une réaction industrielle.
+
+\section{Évolution de l’équilibre et rendement}
+
+\subsection{}
+Par l'approximation d'Ellingham, on a $\Delta_rG^\circ(T_2)=\Delta_rG^\circ(T_1)-(T_2-T_1)*\Delta_rS^\circ$.
+
+\hspace*{\fill} 
+
+A.N. $\Delta_rG^\circ(T_2)=-8.2*10^3-275*(-125.5)=2.6*10^4 \,J\cdot mol^{-1}$
+
+\hspace*{\fill} 
+
+On a donc $K^\circ(T_2)=\exp\left(-\frac{\Delta_rG^\circ(T_2)}{RT_2}\right)=\exp(-\left(\frac{2.6*10^4}{8.31*573}\right))=4.3*10^{-3}$
+
+\hspace*{\fill} 
+
+Et on a $K^\circ(T_2)=Q_r=\frac{n_{C_2H_5OH}}{n_{C_2H_4}n_{H_2O}}\frac{nP^\circ}{P}=\frac{\xi_{eq}(400-\xi_{eq})*1}{(200-\xi_{eq})^2*70}$. 
+
+\hspace*{\fill} 
+
+Finalement, $\boxed{\xi_{eq}= 24.2\,mol}$
+\subsection{}
+Si on ajoute $10,0\, mol$ d’eau au mélange obtenu à l’équilibre, à pression et température constantes, seulement $n_{H_2O}$ et 
+$n$ sont changé: $n_{H2O}^{'}=210-\xi_{eq}, n^{'}=410-\xi_{eq}$. 
+
+\hspace*{\fill} 
+
+On a donc $Q=\frac{24.2*(410-24.2)}{(200-24.2)(210-24.2)*70}=4.1*10^{-3}$
+
+\hspace*{\fill} 
+
+Comme $Q$ diminue, alors $Q<K^\circ(T_2)$, il faut que la réaction évolue dans le sens \fbox{direct}
+
+\hspace*{\fill} 
+
+Et on a $\boxed{\Delta_rG=\Delta_r G^{\circ}(T)+RT\ln(Q)=2.6*10^{4}+8.314*573*\ln(4.1*10^{-3})=-186.2\,J\cdot mol^{-1}}$
+
+\hspace*{\fill} 
+
+Car $\Delta_rG<0$, on arrive à le même résultat: l'équilibre evolue dans le sens direct
+\subsection{}
+Si on veut augment $\eta$, on a besoin d'aumenter $\xi_{eq}$, c'est-à-dire l'évolution de cette réaction dans le sens direct, 
+sans aumenter $n_{C_2H_4,i}$. Il faut que $Q_r$ diminue.
+
+On peut donc 
+\begin{itemize}
+    \item Rajouter plus de $H_2O_{(g)}$: Par la dérivation logarithmique, on a 
+    $$\frac{dQ_r}{Q_r}=\frac{dn}{n}-\frac{dn_{H_2O}}{n_{H2O}}=dn_{H_2O}\left(1-\frac{n}{n_{H_2O}}\right)$$
+    Comme $n_{H_2O}<n$, pour que $dQ_r<0$, il faut $\boxed{dn_{H_2O}>0}$ 
+    \item Enlever $C_2H_5OH$ formé: $n_{C_2H_5OH}$ et $n$ sont tous diminue, $Q_r$ diminue aussi.
+\end{itemize}
+
+
+\end{document}

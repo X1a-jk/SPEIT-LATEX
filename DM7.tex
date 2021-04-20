@@ -1,0 +1,141 @@
+%%% Ne pas modifier jusqu'à la ligne 25
+\documentclass[a4paper,12pt]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+%%\usepackage{CJK}
+\usepackage{yhmath}
+\usepackage[left=2cm,right=2cm,top=3cm,bottom=2cm, headheight=1.5cm,headsep=1.5cm]{geometry}
+%%\usepackage{CJKutf8}
+\usepackage{amsfonts}
+\usepackage{amsmath,amsfonts,amssymb,dsfont}
+\usepackage{graphicx}
+\usepackage{enumitem}		%\enumerate-resume
+\usepackage[colorlinks=true,unicode={true},hyperindex=false, linkcolor=blue, urlcolor=blue]{hyperref}
+\newcommand{\myref}[1]{\ref{#1} page \pageref{#1}}
+
+\addto\captionsfrench{\def\tablename{Tableau}}  %légendes des tableaux
+\renewcommand\thesection{\Roman{section}~-~} 
+\renewcommand\thesubsection{\Roman{section}.\Alph{subsection}~-~} 
+\renewcommand\thesubsubsection{\Roman{section}.\Alph{subsection}.\arabic{subsubsection}~-~} 
+
+\newcommand{\conclusion}[1]{\newline \centerline{\fbox{#1}}}
+
+\setcounter{secnumdepth}{3}
+\parindent=0pt
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\lhead{SJTU-ParisTech} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chead{DM7}
+\rhead{Daniel 518261910024}
+
+\begin{document}
+\renewcommand{\labelitemi}{$\blacktriangleright$}
+\renewcommand{\labelitemii}{$\bullet$}
+
+
+\section{Exercice 1 : Oxydation du plomb}
+\begin{table}[h]
+\begin{center}
+    \begin{tabular}{l|ccccccc}
+    \hline
+                      & $2Ag^+{(aq)}$      & + & $Pb{(s)}$       & = & $2Ag{(s)}$ & + & $Pb^{2+}_{(aq)}$ \\ \hline
+        $c_{initial}$ & $c=5.0*10^{-2}$       &   & $c_{Pb}$      &   & $0$ &  & $0$\\ 
+        $c_{final}$      & $c-2x_v$  &   & $c_{Pb}-x_v$  &   & $2x_v$ & & $x_v$\\ 
+    \end{tabular}
+\end{center}
+\end{table}
+Si la réaction est finalement à l'équilibre, on a 
+$$
+Q_{eq}=\frac{[Pb^{2+}]c^\circ}{[Ag^+]^2}=\frac{x_{v,eq}}{(c-2x_{v,eq})^2}=K^\circ
+$$
+On obtient $x_{v,eq}=0.025-7*10^{-33}\simeq 0.025\,mol \cdot L^{-1}$, c'est une réaction quasi-totale car $c-2x_{v,eq} \simeq 0$
+\subsection{}
+Pour le cas $m_1=1.20\,g$, on a $n_{Pb}=\frac{m_1}{M(Pb)}=\frac{1.20}{207.2}=5.79*10^{-3}\,mol$. 
+
+\hspace*{\fill} 
+
+On a donc $c_{Pb}=\frac{n_{Pb}}{V}=5.79*10^{-2}\, mol\cdot L^{-1}>x_{v,eq}$, tous les $Ag^+_{(aq)}$ a été consumé. On a finalement:
+\begin{itemize}
+    \item dans la solution: $\boxed{c_{Pb^{2+}}=2.5*10^{-2}\,mol\cdot L^{-1}}$, $\boxed{c_{NO_3^-}=5.0*10^{-2}\,mol\cdot L^{-1}}$
+    \item $Ag_s$: $n_{Ag}=cV=5.0*10^{-3}\,mol$, donc $\boxed{m_{Ag}=n_{Ag}M_{Ag}=0.54\,g}$
+    \item $Pb_s$: $c_{Pb}=c_{Pb}-x_v=3.29*10^{-2}\, mol\cdot L^{-1}$, donc $\boxed{m_{Pb}=n_{Pb}M_{Pb}=0.682\,g}$
+\end{itemize}
+\subsection{}
+Pour le cas $m_2=0.410\,g$, on a $n_{Pb}=\frac{m_2}{M(Pb)}=\frac{0.410}{207.2}=1.98*10^{-3}\,mol$. 
+
+\hspace*{\fill} 
+
+On a donc $c_{Pb}=\frac{n_{Pb}}{V}=1.98*10^{-2}\, mol\cdot L^{-1}<x_{v,eq}$, tous les $Pb_{(s)}$ a été dissous, donc on a $x_{v}=1.98*10^{-2}\, mol\cdot L^{-1}$. 
+
+On a finalement:
+\begin{itemize}
+    \item dans la solution: $\boxed{c_{Pb^{2+}}=1.98*10^{-2}\, mol\cdot L^{-1}}$, $\boxed{c_{Ag^+}=c-2x_v=1.04*10^{-2}\, mol\cdot L^{-1}}$, $\boxed{c_{NO_3^-}=5.0*10^{-2}\,mol\cdot L^{-1}}$.
+    \item $Ag_s$: $c_{Ag_s}=2x_v=3.96*10^{-2}\, mol\cdot L^{-1}$, donc $\boxed{m_{Ag}=c_{Ag}VM_{Ag}=0.427\,g}$
+\end{itemize}
+
+\section{Exercice 2 : Équilibre entre deux oxydes de cobalt}
+\begin{table}[h]
+\begin{center}
+    \begin{tabular}{l|ccccc}
+    \hline
+                      & $6CoO{(s)}$      & + & $O_{2(g)}$       & = & $2Co_3O_{4(s)}$  \\ \hline
+        $n_{initial}$ & $n_{1,i}=1.00$       &   & $n_{2,i}=0.300$      &   & $n_{3,i}=0$ \\ 
+        $n_{final}$      & $n_{1,f}=1.00-6\xi_{eq}$  &   & $n_{2,f}=0.300-\xi_{eq}$  &   & $n_{3,f}=2\xi_{eq}$ \\ 
+    \end{tabular}
+\end{center}
+\end{table}
+\subsection{}
+à la température $T = 1150\,K$, on a $\Delta_rG^\circ =-354.6 + 0.3182*1150=11.33\,kJ\cdot mol^{-1}$, 
+
+\hspace*{\fill} 
+
+donc $\boxed{K^\circ(T)=\exp(-\frac{\Delta_rG^\circ}{RT})=\exp(-\frac{11.33*10^3}{8.314*1150})=0.3057}$
+
+\hspace*{\fill} 
+
+Car on a $Q_{eq}=\frac{P^\circ}{P_{eq}}=K^\circ(T)$, on a donc $\boxed{P_{eq}=\frac{p^\circ}{k^\circ(T)}=3.271\,bar}$
+
+\subsection{}
+Si l'on suppose que la réaction soit à l'équilibre, on a donc $n_{O_2}=0.300-\xi_{eq}$
+
+Si $O_2$ est considéré comme gaz parfait, on a 
+
+$$Q=\frac{P^\circ}{P_{O_2}}=\frac{P^\circ V}{n_{O_2}RT}=\frac{10^5*10.0*10^{-3}}{(0.3-\xi_{eq})*8.314*1150}=K^\circ(T)$$
+
+On obtient $\xi_{eq}=-0.042<0$, ce n'est pas possible.  
+
+Donc \fbox{CoO ne peut pas être oxydé dans ces conditions}. 
+
+De puis, car on a $\Delta_rG^\circ>0$, la réaction tend à évoluer dans le sens indirect, ce qui nous donne le même résultat. 
+\subsection{}
+Pour la volume donnée, on a toujours 
+$$
+K^\circ(T)=Q(V)=\frac{P^\circ}{P_{O_2}}=\frac{P^\circ V}{n_{O_2}RT}=\frac{10^5*V}{(0.3-\xi_{eq})*8.314*1150}
+$$
+Pour que $\xi_{eq}$ soit positif, il faut $\boxed{V\leq K^\circ(T)\frac{n_{2,i}RT}{P^\circ}}$. A.N. $V_{max}=0.3057*\frac{0.300*8.314*1150}{10^5}=8.77*10^{-3}\,m^3$, soit $\boxed{8.77 \,L}$
+(On peut avoir le même résultat pour que $\Delta_rG>0$)
+\subsection{}
+Il faut que $n_{1,f}=1.00-6\xi_{eq}>0$, soit $\xi_{eq}<\frac{1}{6}$. Sinon, CoO devient limitant. Alors, on a $V>\frac{K^\circ(T)RT}{P^\circ}=3.90*10^{-3}\,m^3$. Donc $V_{min}=3.90\,L$ 
+
+\begin{itemize}
+    \item Pour $V>V_{max}=8.77\,L$, CoO ne peut pas être oxydé dans ces conditions. 
+    
+    $\boxed{n_{CoO}=1.00\,mol,\,n_{O_2}=0.300\,mol}$, les conditions initiaux. 
+    
+    Donc $P=\frac{n_{O_2}RT}{V}$, soit $\boxed{P=0.287\frac{1}{V}}$ ($V$ en $L$)
+    \item Pour $V<V_{min}=3.90\,L$, cette réaction est totale. $n_{O_2}=0.300-1.00/6=0.133\,mol$, donc $\boxed{P=\frac{n_{O_2}RT}{V}=1.27\frac{1}{V}}$($V$ en $L$)
+    
+    \item Pour $0<V_{min}\leq V_{max}$, on a $n_{O_2}=\frac{P^\circ V}{RTK^\circ(T)}=n_{i,O_2}-\xi_{eq}$, où $0<\xi_{eq}=n_{i,O_2}-\frac{P^\circ V}{RTK^\circ(T)}<0.300\,mol$. 
+    et $\xi_{eq}=0.300-34.2V$($V$ en $m^3$)
+
+    Ainsi, un mélange de $CoO,O_2,Co_3O_4$ sont présents dans le récipient.
+    
+    A.N. $\boxed{n_{CoO}=(205V-0.800)\,mol,\,n_{O_2}=(34.2V)\,mol,\,n_{Co_3O_4}=(0.600-68.4V)\,mol}$, avec $V$ en $m^3$. 
+
+    Finalement, car $P=\frac{n_{O_2}RT}{V}$, on a $\boxed{P=\frac{34.2V*8.314*1150}{V}=3.27\,bar}$
+\end{itemize}
+
+\end{document}

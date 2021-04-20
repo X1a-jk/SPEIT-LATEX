@@ -1,0 +1,115 @@
+%%% Ne pas modifier jusqu'à la ligne 25
+\documentclass[a4paper,12pt]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+%%\usepackage{CJK}
+\usepackage{yhmath}
+\usepackage[left=2cm,right=2cm,top=3cm,bottom=2cm, headheight=1.5cm,headsep=1.5cm]{geometry}
+%%\usepackage{CJKutf8}
+\usepackage{amsfonts}
+\usepackage{amsmath,amsfonts,amssymb,dsfont}
+\usepackage{graphicx}
+\usepackage{enumitem}		%\enumerate-resume
+\usepackage[colorlinks=true,unicode={true},hyperindex=false, linkcolor=blue, urlcolor=blue]{hyperref}
+\newcommand{\myref}[1]{\ref{#1} page \pageref{#1}}
+
+\addto\captionsfrench{\def\tablename{Tableau}}  %légendes des tableaux
+\renewcommand\thesection{\Roman{section}~-~} 
+\renewcommand\thesubsection{\Roman{section}.\Alph{subsection}~-~} 
+\renewcommand\thesubsubsection{\Roman{section}.\Alph{subsection}.\arabic{subsubsection}~-~} 
+
+\newcommand{\conclusion}[1]{\newline \centerline{\fbox{#1}}}
+
+\setcounter{secnumdepth}{3}
+\parindent=0pt
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\lhead{SJTU-ParisTech} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chead{DM10}
+\rhead{Daniel 518261910024}
+
+\begin{document}
+\renewcommand{\labelitemi}{$\blacktriangleright$}
+\renewcommand{\labelitemii}{$\bullet$}
+
+
+\section{Exercice 1}
+% \begin{table}[h]
+% \begin{center}
+%     \begin{tabular}{l|ccccccc}
+%     \hline
+%                       & $CH_4$      & + & $Br_2$       & = & $CH_3Br$ & + & $HBr$ \\ \hline
+%         $c_{initial}(mol\,L^{-1})$ & $c_{1,i}=1.0*10^{-2}$       &   & $c_{2,i}=1.0*10^{-2}$      &   & $0$ &  & $0$\\ 
+%         $c_{final}(mol\,L^{-1})$      & $c_{1,f}=1.0*10^{-2}-\xi_v$  &   & $c_{2,f}=1.0*10^{-2}-\xi_v$  &   & $\xi_v$ & & $\xi_v$\\ 
+%     \end{tabular}
+% \end{center}
+% \end{table}
+\subsection{}
+On appliquer l’AEQS à $Br^\bullet$:
+\begin{equation}
+    \frac{d[Br^\bullet]}{dt}=0=2v_1-v_2+v_{-2}+v_3-2v_4
+\end{equation}
+On appliquer l’AEQS à $CH_3^\bullet$:
+\begin{equation}
+    \frac{d[CH_3^\bullet]}{dt}=0=v_2-v_{-2}-v_3
+\end{equation}
+\subsection{}
+Selon les mécanismes, on a 
+$$
+\begin{array}{lcl}
+    v_1(t) & = & k_1[Br_2]\\
+    v_2(t) & = & k_2[Br^\bullet][CH_4]\\
+    v_{-2}(t) & = & k_{-2}[CH_3^\bullet][HBr]\\
+    v_3(t) & = & k_3[CH_3^\bullet][Br_2]\\
+    v_4(t) & = & k_4[Br^\bullet]^2
+\end{array}
+$$
+Selon $(1)+(2)$, on a $v_1=v_4$, donc 
+$$
+\boxed{[Br^\bullet]=\sqrt{\frac{k_1}{k_4}[Br_2]}}
+$$
+Selon $(2)$, on a $v_2-v_{-2}-v_3=0$, donc 
+$$
+k_2[Br^\bullet][CH_4]=k_{-2}[CH_3^\bullet][HBr]+k_3[CH_3^\bullet][Br_2]
+$$
+donc 
+$$
+k_2\sqrt{\frac{k_1}{k_4}[Br_2]}[CH_4]=[CH_3^\bullet](k_{-2}[HBr]+k_3[Br_2])
+$$
+d'où
+$$
+\boxed{[CH_3^\bullet]=\frac{k_2\sqrt{\frac{k_1}{k_4}[Br_2]}[CH_4]}{k_{-2}[HBr]+k_3[Br_2]}}
+$$
+\subsection{}
+On a 
+$$
+v=\frac{d[CH_3Br]}{dt}=v_3=k_3[CH_3^\bullet][Br_2]=\frac{k_2\sqrt{\frac{k_1}{k_4}[Br_2][CH_4]}}{1+\frac{k_{-2}[HBr]}{k_3[Br_2]}}
+$$
+à l'initial, on a $[HBr]\simeq 0$, donc 
+$$\boxed{v\simeq k_2\sqrt{\frac{k_1}{k_4}[Br_2]}[CH_4]}$$
+\fbox{La réaction a un ordre initial}.
+\subsection{}
+On suppose la vitesse initiale de cette réaction est donnée par $v_{ini}=k[CH_4]^p[Br_2]^q$, avec $p,q$ les 
+ordres initiaux partiels. Par les expériences, on obtient 
+$$
+\begin{array}{lcl}
+    v_0 & = & kc_0^pc_0^q\\
+    2v_0 & = & kc_0^p(4c_0)^q\\
+    2v_0 & = & k(2c_0)^pc_0^q
+\end{array}
+$$
+On obtient donc $q=\frac{1}{2}$, $p=1$, donc la loi de vitesse initiale de cette réaction:
+$$
+\boxed{v_{ini}=k[CH_4]\sqrt{[Br_2]}}
+$$
+\subsection{}
+
+ces faits sont d'accord avec la loi trouvée dans la qustion $3$. On retrouve la loi 
+de vitesse expérientale avec $k=k_2\sqrt{\frac{k_1}{k_4}}$
+
+\hspace*{\fill} 
+
+\end{document}

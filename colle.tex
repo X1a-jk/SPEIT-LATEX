@@ -1,0 +1,87 @@
+%%% Ne pas modifier jusqu'à la ligne 25
+\documentclass[a4paper,12pt]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+%%\usepackage{CJK}
+\usepackage{yhmath}
+\usepackage[left=2cm,right=2cm,top=3cm,bottom=2cm, headheight=1.5cm,headsep=1.5cm]{geometry}
+%%\usepackage{CJKutf8}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage{amsmath,amsfonts,amssymb,dsfont}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{enumitem}		%\enumerate-resume
+\usepackage[colorlinks=true,unicode={true},hyperindex=false, linkcolor=blue, urlcolor=blue]{hyperref}
+\newcommand{\myref}[1]{\ref{#1} page \pageref{#1}}
+
+\addto\captionsfrench{\def\tablename{Tableau}}  %légendes des tableaux
+\renewcommand\thesection{\Roman{section}~-~} 
+\renewcommand\thesubsection{\Roman{section}.\Alph{subsection}~-~} 
+\renewcommand\thesubsubsection{\Roman{section}.\Alph{subsection}.\arabic{subsubsection}~-~} 
+
+\newcommand{\conclusion}[1]{\newline \centerline{\fbox{#1}}}
+
+\setcounter{secnumdepth}{3}
+\parindent=0pt
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\lhead{SJTU-ParisTech} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chead{DM5}
+\rhead{Daniel 518261910024}
+
+\begin{document}
+\renewcommand{\labelitemi}{$\blacktriangleright$}
+\renewcommand{\labelitemii}{$\bullet$}
+
+
+
+\section{}
+\begin{itemize}
+    \item 1.a $\mathbb{N}^{*}$
+    \item 1.b $\mathbb{P}(X \geq x)=(1-p)^{x-1}$
+    \item 1.c $\mathbb{P}(T \geq t)=\mathbb{P}(X \geq t)\mathbb{P}(Y \geq t)=(1-p)^{2t-2}$
+    \item 1.d $\mathbb{P}(T=t)= (1-p)^{2t-2}(2p-p^2)$
+\end{itemize}
+\section{}
+\begin{itemize}
+    \item 2.a $\mathbb{N}$
+    \item 2.b $\frac{p}{p-1}\ln p$
+    \item 2.c 
+\end{itemize}
+
+
+\begin{align*}
+    (T=t) &= (X=t,Y>t)\cup(X>t,Y=t)\cup(X=t,Y=t)\\
+    &=\bigcup_{i=t+1}^{\infty}(X=t,Y=i)\cup\bigcup_{j=t+1}^{\infty}(X=j,Y=t)\cup(X=t,Y=t)
+\end{align*}
+
+\begin{align*}
+    \mathbb{P}(T=t)&=\sum_{i=t+1}^{+\infty}\mathbb{P}(X=t,Y=i)+\sum_{j=t+1}^{+\infty}\mathbb{P}(X=j,Y=t)+\mathbb{P}(X=t,Y=t)\\
+    &=\sum_{i=t+1}^{+\infty}\mathbb{P}(X=t)\mathbb{P}(Y=i)+\sum_{j=t+1}^{+\infty}\mathbb{P}(X=j)\mathbb{P}(Y=t)+\mathbb{P}(X=t)\mathbb{P}(Y=t)\\
+    &=p(1-p)^{t-1}\sum_{i=t+1}^{+\infty}p(1-p)^{i-1}+p(1-p)^{t-1}\sum_{j=t+1}^{+\infty}p(1-p)^{j-1}+p(1-p)^{t-1}*p(1-p)^{t-1}\\
+    &=2p(1-p)^{t-1}(1-p)^t+p^2(1-p)^{2t-2}\\
+    &=p(2-p)(1-p)^{2t-2}
+\end{align*}
+
+\begin{align*}
+    (T=t,Z=0)&=(\min(X,Y)=t,X=Y)\\
+    \mathbb{P}(T=t,Z=0)&=\mathbb{P}(X=t,Y=t)=\mathbb{P}(X=t)\mathbb{P}(Y=t)\\
+    &=p(1-p)^{t-1}*p(1-p)^{t-1}=p(2-p)(1-p)^{2t-2}\\
+    &=\left(p(2-p)(1-p)^{2t-2}\right)\left(\frac{p}{2-p}\right)\\
+    &=\mathbb{P}(T=t)\mathbb{P}(Z=0)
+\end{align*}
+
+\begin{align*}
+    (T=t,Z=z)&=(\min(X,Y)=t,|X-Y|=z)=(X=t,Y=z+t)\cup(X=z+t,Y=t)\\
+    \mathbb{P}(T=t,Z=z)&=\mathbb{P}(X=t,Y=t+z)+\mathbb{P}(X=t+z,Y=t)\\
+    &=\mathbb{P}(X=t)\mathbb{P}(Y=t+z)+\mathbb{P}(X=t+z)\mathbb{P}(Y=t)\\
+    &=2p(1-p)^{t-1}*p(1-p)^{t+z-1}\\
+    &=\left(p(2-p)(1-p)^{2t-2}\right)\left((1-p)^z\frac{2p}{2-p}\right)\\
+    &=\mathbb{P}(T=t)\mathbb{P}(Z=z)    
+\end{align*}
+$1-p \in ]0,1[$
+\end{document}
